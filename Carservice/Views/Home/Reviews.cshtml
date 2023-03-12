@@ -1,0 +1,461 @@
+﻿@{
+
+}
+
+
+<head>
+    <title>Автосервис</title>
+
+    <!--slider revolution-->
+    <link rel="stylesheet" type="text/css" href="~/rs-plugin/css/settings.css" media="screen" />
+    <!--style-->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600,700,800&amp;subset=latin,latin-ext" rel="stylesheet"  type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/style/reset.css">
+    <link rel="stylesheet" type="text/css" href="~/style/superfish.css">
+    <link rel="stylesheet" type="text/css" href="~/style/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="~/style/jquery.qtip.css">
+    <link rel="stylesheet" type="text/css" href="~/style/style.css">
+    <link rel="stylesheet" type="text/css" href="~/style/animations.css">
+    <link rel="stylesheet" type="text/css" href="~/style/responsive.css">
+    <link rel="stylesheet" type="text/css" href="~/style/odometer-theme-default.css">
+    <!--fonts-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/streamline-small/style.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/template/styles.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/social/styles.css">
+    <link rel="stylesheet" type="text/css" href="~/style/reviews.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+</head>
+
+<body>
+
+			<div class="header-top-bar-container clearfix">
+				<div class="header-top-bar">
+					<ul class="contact-details clearfix">
+						<li class="template-phone">
+							+7(86394-111-11)
+						</li>
+						<li class="template-mail">
+							<a href="mailto:carservice@mail.com">carservice@mail.com</a>
+						</li>
+						<li class="template-clock">
+							Пн - Пт: 8:00 - 17:30
+						</li>
+					</ul>
+					<div class="search-container">
+						<a class="template-search" href="#"></a>
+						<form class="search" action="search.html">
+							<input type="text" name="s" placeholder="Поиск..." value="Поиск..." class="search-input hint">
+							<fieldset class="search-submit-container">
+								<span class="template-search"></span>
+								<input type="submit" class="search-submit" value="">
+							</fieldset>
+						</form>
+					</div>
+				@*<ul class="social-icons">
+						<li>
+							<a target="_blank" href="http://facebook.com/QuanticaLabs" class="social-facebook" title="facebook"></a>
+						</li>
+						<li>
+							<a target="_blank" href="https://twitter.com/QuanticaLabs" class="social-twitter" title="twitter"></a>
+						</li>
+						<li>
+							<a href="https://pinterest.com/quanticalabs/" class="social-pinterest" title="pinterest"></a>
+						</li>
+					</ul>*@
+				</div>
+				<a href="#" class="header-toggle template-arrow-up"></a>
+			</div>
+			<div class="header-container">
+				<div class="vertical-align-table column-1-1">
+					<div class="header clearfix">
+						<div class="logo vertical-align-cell">
+							<h1><a href="#">Автосервис</a></h1>
+						</div>
+						<a href="#" class="mobile-menu-switch vertical-align-cell">
+							<span class="line"></span>
+							<span class="line"></span>
+							<span class="line"></span>
+						</a>
+						<div class="menu-container clearfix vertical-align-cell">
+							<nav>
+								<ul class="sf-menu">
+									<li>
+										<a asp-controller="Home" asp-action="Index">
+											Главная
+										</a>
+									</li>
+									<li>
+										<a href="#" >
+											Услуги
+										</a>
+										<ul>
+											<li>
+												<a href="#">
+													Диагностика двигателя
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													Смазки, масла, фильтры
+												</a>
+											</li>
+											<li>
+												<a href="#" >
+													Ремни и шланги
+												</a>
+											</li>
+											<li>
+												<a href="#" >
+													Ремонт тормозов
+												</a>
+											</li>
+											<li>
+												<a href="#" >
+													Колёса и шины
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a asp-controller="Home" asp-action="RepairRequest">
+											Заявка на ремонт
+										</a>
+									</li>
+									<li class="selected">
+										<a asp-controller="Home" asp-action="Reviews">
+											Отзывы
+										</a>
+									</li>
+									@if (User.IsInRole("Manager"))
+									{
+										<li class="left-flyout">
+											<a asp-controller="ManagerPanel" asp-action="Index">
+												Панель управления
+											</a>
+										</li>
+									}
+									@if (User.Identity.IsAuthenticated)
+									{
+										<li class="left-flyout">
+											<a asp-controller="Auth" asp-action="Logout">
+												Выйти
+											</a>
+										</li>
+									}
+									else
+									{
+										<li class="left-flyout">
+											<a asp-controller="Auth" asp-action="Login">
+												Вход
+											</a>
+										</li>
+									}
+									<li class="left-flyout">
+										<a asp-controller="Auth" asp-action="Register">
+											Регистрация
+										</a>
+									</li>
+								</ul>
+							</nav>
+						@*<div class="mobile-menu-container">
+								<div class="mobile-menu-divider"></div>
+								<nav>
+									<ul class="mobile-menu collapsible-mobile-submenus">
+										<li class="selected">
+											<a href="index.html" title="Home">
+												Home
+											</a>
+										</li>
+										<li>
+											<a href="services.html" title="Services">
+												Services
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="service_engine_diagnostics.html" title="Engine Diagnostics">
+														Engine Diagnostics
+													</a>
+												</li>
+												<li>
+													<a href="service_lube_oil_filters.html" title="Lube, Oil and Filters">
+														Lube, Oil and Filters
+													</a>
+												</li>
+												<li>
+													<a href="service_belts_hoses.html" title="Belts and Hoses">
+														Belts and Hoses
+													</a>
+												</li>
+												<li>
+													<a href="service_air_conditioning.html" title="Air Conditioning">
+														Air Conditioning
+													</a>
+												</li>
+												<li>
+													<a href="service_brake_repair.html" title="Brake Repair">
+														Brake Repair
+													</a>
+												</li>
+												<li>
+													<a href="service_tire_wheel.html" title="Tire and Wheel Services">
+														Tire and Wheel Services
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="galleries.html" title="Gallery">
+												Gallery
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="gallery_engine_diagnostics.html" title="Engine Diagnostics">
+														Engine Diagnostics
+													</a>
+												</li>
+												<li>
+													<a href="gallery_oil_change.html" title="Oil Change">
+														Oil Change
+													</a>
+												</li>
+												<li>
+													<a href="gallery_belts_hoses.html" title="Belts and Hoses">
+														Belts and Hoses
+													</a>
+												</li>
+												<li>
+													<a href="gallery_tire_change.html" title="Tire Change">
+														Tire Change
+													</a>
+												</li>
+												<li>
+													<a href="gallery_wheel_services.html" title="Wheel Services">
+														Wheel Services
+													</a>
+												</li>
+												<li>
+													<a href="gallery_lube_services.html" title="Lube Services">
+														Lube Services
+													</a>
+												</li>
+												<li>
+													<a href="gallery_brake_repair.html" title="Brake Repair">
+														Brake Repair
+													</a>
+												</li>
+												<li>
+													<a href="gallery_other_car_services.html" title="Other Car Services">
+														Other Car Services
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="about.html" title="Pages">
+												Pages
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="about.html" title="About">
+														About
+													</a>
+												</li>
+												<li>
+													<a href="404.html" title="404 Not Found">
+														404 Not Found
+													</a>
+												</li>
+												<li>
+													<a href="services.html" title="Services">
+														Services
+													</a>
+												</li>
+												<li>
+													<a href="service_engine_diagnostics.html" title="Single Service">
+														Single Service
+													</a>
+												</li>
+												<li>
+													<a href="galleries.html" title="Galleries">
+														Galleries
+													</a>
+												</li>
+												<li>
+													<a href="gallery_engine_diagnostics.html" title="Single Project">
+														Single Gallery
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="blog.html" title="Blog">
+												Blog
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="blog.html" title="Blog">
+														Blog
+													</a>
+												</li>
+												<li>
+													<a href="blog_left_sidebar.html" title="Blog">
+														Blog Left Sidebar
+													</a>
+												</li>
+												<li>
+													<a href="blog_2_columns.html" title="Blog 2 Columns">
+														Blog 2 Columns
+													</a>
+												</li>
+												<li>
+													<a href="post.html" title="Single Post">
+														Single Post
+													</a>
+												</li>
+												<li>
+													<a href="search.html?s=ipsum" title="Search Template">
+														Search Template
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="appointment.html" title="Appointment">
+												Appointment
+											</a>
+										</li>
+										<li class="left-flyout">
+											<a href="contact.html" title="Contact">
+												Contact
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="contact.html" title="Contact Style 1">
+														Contact Style 1
+													</a>
+												</li>
+												<li>
+													<a href="contact_2.html" title="Contact Style 2">
+														Contact Style 2
+													</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+							</div>*@
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+   <div class="koguvcavis-varazdel">
+     <div class="sestim-donials">
+        <h1>Отзывы</h1>
+        <div class="sectionesag"></div>
+        <div class="sagestim-lonials">
+            <div class="vemotau-vokusipol">
+                <div class="testimonial">
+                    <img src="~/images/users/1.jpg" alt="">
+                    <div class="gecedanam">Антон Попов</div>
+                        <div class="apogered-gselected">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Хочу выразить огромную благодарность мастеру консультанту Резникову Сергею. 
+                        Ответил на все интересующие вопросы, и очень быстро решил все мои проблемы!</p>
+                </div>
+            </div>
+   
+            <div class="vemotau-vokusipol">
+                <div class="testimonial">
+                    <img src="~/images/users/secondUser.jpg" alt="">
+                    <div class="gecedanam">Дмитрий Атрохов</div>
+                    <div class="apogered-gselected">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+   
+                    <p>Не однократно обращаюсь в данный автосервис, прекрасные специалисты, не дорогие цены на услуги,
+                        быстрота и качество. Хотя живу в Азино, но еду на Пост. Так держать!!!</p>
+                </div>
+            </div>
+   
+            <div class="vemotau-vokusipol">
+                <div class="testimonial">
+                <img src="~/images/users/5.jpg" alt="">
+                <div class="gecedanam">Людмила Гидина</div>
+                    <div class="apogered-gselected">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+					<p>Заехала по совету друзей. Спасибо за быстрое и хорошее обслуживание! Осталась довольной. Цены радуют .</p>
+                </div>
+            </div>
+            <div class="vemotau-vokusipol">
+                <div class="testimonial">
+                <img src="~/images/users/2.jpg" alt="">
+                <div class="gecedanam">Алексей Волков</div>
+                    <div class="apogered-gselected">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p>Всегда у вас обслуживаюсь, автомеханики профессионалы своего дела!Обслуживание на высшем уровне.Так держать молодцы процветания вам.</p>
+                </div>
+            </div>
+            <div class="vemotau-vokusipol">
+                <div class="testimonial">
+                <img src="~/images/users/4.jpg" alt="">
+                <div class="gecedanam">Оксана Меняйло</div>
+                    <div class="apogered-gselected">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p>Я тоже поехала в данный автосервис по совету молодого человека.Осталась довольна,быстро нашли причину, 
+                        устранили.Ребята вежливые,не грубые.Хорошие специалисты.</p>
+                </div>
+            </div>
+            <div class="vemotau-vokusipol">
+                <div class="testimonial">
+                <img src="~/images/users/3.jpg" alt="">
+                <div class="gecedanam">Сергей Обрамов</div>
+                    <div class="apogered-gselected">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p>Отличный сервис, недорогие запчасти, качественный ремонт. Спасибо</p>
+                </div>
+            </div>
+        </div>
+     </div>
+   </div>
+   <div class="row gray full-width padding-top-54 padding-bottom-61 align-center">
+		<h3><span class="button-label">ПОНРАВИЛСЯ НАШ СЕРВИС? </span> <a class="more" href="#"><span>ОСТАВИТЬ ОТЗЫВ</span></a></h3>
+	</div>
+</body>

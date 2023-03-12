@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Автосервис</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="Mechanic, Car, Auto" />
+    <meta name="description" content="Responsive Mechanic Auto Shop Template" />
+</head>
+<body>
+    @*<div>
+        <nav>
+            <a asp-controller="Home" asp-action="Index">Home</a>
+
+            <a asp-controller="Lib" asp-action="Index">My library</a>
+
+            <a asp-controller="Home" asp-action="Genries">Genres</a>
+
+            <a asp-controller="Panel" asp-action="Index">Admin panel</a>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Auth" asp-action="Logout">Log out</a>
+            }
+            else
+            {
+                <a asp-controller="Auth" asp-action="Login">Sign in</a>
+            }
+            <a asp-controller="Auth" asp-action="Register">Register</a>
+        </nav>
+    </div>*@
+
+    <div>
+        @RenderBody()
+    </div>
+
+</body>
+</html>

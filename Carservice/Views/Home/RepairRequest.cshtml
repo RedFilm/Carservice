@@ -1,0 +1,560 @@
+﻿@model RepairRequestViewModel
+@{
+
+}
+
+<head>
+	<title>Автосервис</title>
+	<!--slider revolution-->
+	<link rel="stylesheet" type="text/css" href="~/rs-plugin/css/settings.css" media="screen" />
+	<!--style-->
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="~/style/reset.css">
+	<link rel="stylesheet" type="text/css" href="~/style/superfish.css">
+	<link rel="stylesheet" type="text/css" href="~/style/prettyPhoto.css">
+	<link rel="stylesheet" type="text/css" href="~/style/jquery.qtip.css">
+	<link rel="stylesheet" type="text/css" href="~/style/style.css">
+	<link rel="stylesheet" type="text/css" href="~/style/animations.css">
+	<link rel="stylesheet" type="text/css" href="~/style/responsive.css">
+	<link rel="stylesheet" type="text/css" href="~/style/odometer-theme-default.css">
+	<!--fonts-->								 
+	<link rel="stylesheet" type="text/css" href="~/fonts/streamline-small/style.css">
+	<link rel="stylesheet" type="text/css" href="~/fonts/template/styles.css">
+	<link rel="stylesheet" type="text/css" href="~/fonts/social/styles.css">
+	<link rel="shortcut icon" href="~/images/favicon.ico">
+</head>
+
+<body>
+	<div class="site-container">
+			<div class="header-top-bar-container clearfix">
+				<div class="header-top-bar">
+					<ul class="contact-details clearfix">
+						<li class="template-phone">
+							+7(86394-111-11)
+						</li>
+						<li class="template-mail">
+							<a href="mailto:carservice@mail.com">carservice@mail.com</a>
+						</li>
+						<li class="template-clock">
+							Пн - Пт: 8:00 - 17:30
+						</li>
+					</ul>
+					<div class="search-container">
+						<a class="template-search" href="#" title="Поиск"></a>
+						<form class="search" action="search.html">
+							<input type="text" name="s" placeholder="Поиск..." value="Поиск..." class="search-input hint">
+							<fieldset class="search-submit-container">
+								<span class="template-search"></span>
+								<input type="submit" class="search-submit" value="">
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<a href="#" class="header-toggle template-arrow-up"></a>
+			</div>
+			<div class="header-container">
+			<!--<div class="header-container sticky">-->
+				<div class="vertical-align-table column-1-1">
+					<div class="header clearfix">
+						<div class="logo vertical-align-cell">
+							<h1><a href="home">Автосервис</a></h1>
+						</div>
+						<a href="#" class="mobile-menu-switch vertical-align-cell">
+							<span class="line"></span>
+							<span class="line"></span>
+							<span class="line"></span>
+						</a>
+						<div class="menu-container clearfix vertical-align-cell">
+							<nav>
+								<ul class="sf-menu">
+									<li>
+										<a asp-controller="Home" asp-action="Index">
+											Главная
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											Услуги
+										</a>
+										<ul>
+											<li>
+												<a href="#">
+													Диагностика двигателя
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													Смазки, масла, фильтры
+												</a>
+											</li>
+											<li>
+												<a href="#" >
+													Ремни и шланги
+												</a>
+											</li>
+											<li>
+												<a href="#" >
+													Ремонт тормозов
+												</a>
+											</li>
+											<li>
+												<a href="#" >
+													Колёса и шины
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="selected">
+										<a href="#">
+											Заявка на ремонт
+										</a>
+									</li>
+									<li>
+										<a asp-controller="Home" asp-action="Reviews">
+											Отзывы
+										</a>
+									</li>
+								</ul>
+							</nav>
+							@*<div class="mobile-menu-container">
+								<div class="mobile-menu-divider"></div>
+								<nav>
+									<ul class="mobile-menu collapsible-mobile-submenus">
+										<li>
+											<a href="index.html" title="Home">
+												Home
+											</a>
+										</li>
+										<li>
+											<a href="services.html" title="Services">
+												Services
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="service_engine_diagnostics.html" title="Engine Diagnostics">
+														Engine Diagnostics
+													</a>
+												</li>
+												<li>
+													<a href="service_lube_oil_filters.html" title="Lube, Oil and Filters">
+														Lube, Oil and Filters
+													</a>
+												</li>
+												<li>
+													<a href="service_belts_hoses.html" title="Belts and Hoses">
+														Belts and Hoses
+													</a>
+												</li>
+												<li>
+													<a href="service_air_conditioning.html" title="Air Conditioning">
+														Air Conditioning
+													</a>
+												</li>
+												<li>
+													<a href="service_brake_repair.html" title="Brake Repair">
+														Brake Repair
+													</a>
+												</li>
+												<li>
+													<a href="service_tire_wheel.html" title="Tire and Wheel Services">
+														Tire and Wheel Services
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="galleries.html" title="Gallery">
+												Gallery
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="gallery_engine_diagnostics.html" title="Engine Diagnostics">
+														Engine Diagnostics
+													</a>
+												</li>
+												<li>
+													<a href="gallery_oil_change.html" title="Oil Change">
+														Oil Change
+													</a>
+												</li>
+												<li>
+													<a href="gallery_belts_hoses.html" title="Belts and Hoses">
+														Belts and Hoses
+													</a>
+												</li>
+												<li>
+													<a href="gallery_tire_change.html" title="Tire Change">
+														Tire Change
+													</a>
+												</li>
+												<li>
+													<a href="gallery_wheel_services.html" title="Wheel Services">
+														Wheel Services
+													</a>
+												</li>
+												<li>
+													<a href="gallery_lube_services.html" title="Lube Services">
+														Lube Services
+													</a>
+												</li>
+												<li>
+													<a href="gallery_brake_repair.html" title="Brake Repair">
+														Brake Repair
+													</a>
+												</li>
+												<li>
+													<a href="gallery_other_car_services.html" title="Other Car Services">
+														Other Car Services
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="about.html" title="Pages">
+												Pages
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="about.html" title="About">
+														About
+													</a>
+												</li>
+												<li>
+													<a href="404.html" title="404 Not Found">
+														404 Not Found
+													</a>
+												</li>
+												<li>
+													<a href="services.html" title="Services">
+														Services
+													</a>
+												</li>
+												<li>
+													<a href="service_engine_diagnostics.html" title="Single Service">
+														Single Service
+													</a>
+												</li>
+												<li>
+													<a href="galleries.html" title="Galleries">
+														Galleries
+													</a>
+												</li>
+												<li>
+													<a href="gallery_engine_diagnostics.html" title="Single Project">
+														Single Gallery
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="blog.html" title="Blog">
+												Blog
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="blog.html" title="Blog">
+														Blog
+													</a>
+												</li>
+												<li>
+													<a href="blog_left_sidebar.html" title="Blog">
+														Blog Left Sidebar
+													</a>
+												</li>
+												<li>
+													<a href="blog_2_columns.html" title="Blog 2 Columns">
+														Blog 2 Columns
+													</a>
+												</li>
+												<li>
+													<a href="post.html" title="Single Post">
+														Single Post
+													</a>
+												</li>
+												<li>
+													<a href="search.html?s=ipsum" title="Search Template">
+														Search Template
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li class="selected">
+											<a href="appointment.html" title="Appointment">
+												Appointment
+											</a>
+										</li>
+										<li class="left-flyout">
+											<a href="contact.html" title="Contact">
+												Contact
+											</a>
+											<a href="#" class="template-arrow-menu"></a>
+											<ul>
+												<li>
+													<a href="contact.html" title="Contact Style 1">
+														Contact Style 1
+													</a>
+												</li>
+												<li>
+													<a href="contact_2.html" title="Contact Style 2">
+														Contact Style 2
+													</a>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+							</div>*@
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="theme-page padding-bottom-66">
+				<div class="clearfix">
+
+					<div class="row page-margin-top">
+						<div class="column column-1-1">
+							<div class="row">
+								<h2 class="box-header">ЗАПОЛНИТЕ ЗАЯВКУ</h2>
+								<p class="description align-center"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row page-margin-top">
+						<form class="contact-form cost-calculator-container" id="contact-form" method="post" action="">
+							<div class="row">
+								<fieldset class="column column-1-3">
+									<div class="cost-calculator-box clearfix">
+										<label>ГОД ВЫПУСКА</label>
+										<input type="hidden" name="vehicle-year-label" value="VEHICLE YEAR">
+										<div class="cost-slider-container">
+											<input id="vehicle-year" class="cost-slider-input" name="vehicle-year" type="number" value="2008">
+											<div class="cost-slider" data-value="2008" data-step="1" data-min="1980" data-max="2023" data-input="vehicle-year"></div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset class="column column-1-3">
+									<div class="cost-calculator-box clearfix">
+										<label>МАРКА</label>
+										<input type="hidden" name="vehicle-make-label" value="VEHICLE MAKE">
+										<select name="vehicle-make" id="vehicle-make" class="cost-dropdown">
+											<option value="" selected="selected">Выбрать...</option>
+											<option value="General Motors">General Motors</option>
+											<option value="Land Rover">Land Rover</option>
+											<option value="Lexus">Lexus</option>
+											<option value="Lincoln">Lincoln</option>
+											<option value="Mazda">Mazda</option>
+											<option value="Mercedes - Benz">Mercedes - Benz</option>
+											<option value="Mercury">Mercury</option>
+											<option value="Mitsubishi">Mitsubishi</option>
+											<option value="Nissan">Nissan</option>
+											<option value="Renault">Renault</option>
+											<option value="Plymouth">Plymouth</option>
+											<option value="Pontiac Porsche">Pontiac Porsche</option>
+											<option value="Rover">Rover</option>
+											<option value="Saab">Saab</option>
+											<option value="Saleen">Saleen</option>
+										</select>
+										<input type="hidden" class="vehicle-make" name="vehicle-make-name" value="">
+									</div>
+								</fieldset>
+								<fieldset class="column column-1-3">
+									<div class="cost-calculator-box clearfix">
+										<label>ПРОБЕГ</label>
+										<input type="hidden" name="vehicle-mileage-label" value="VEHICLE MILEAGE">
+										<input id="vehicle-mileage" class="cost-slider-input big" name="vehicle-mileage" type="number" value="" placeholder="Пробег">
+									</div>
+								</fieldset>
+							</div>
+							<div class="row page-margin-top">
+								<fieldset class="column column-1-2">
+									@*<div class="cost-calculator-box clearfix">
+										<label>ПРЕДПОЧТИТЕЛЬНАЯ ДАТА РЕМОНТА</label>
+										<input type="hidden" name="appointment-date-label" value="PREFFERED DATE OF APPOINTMENT">
+										<div class="datepicker-container">
+											<span class="ui-icon template-arrow-dropdown"></span>
+											<input id="appointment-date" class="cost-slider-datepicker big" name="appointment-date" value="" placeholder="Предпочтительна дата ремонта">
+										</div>
+									</div>
+									<div class="cost-calculator-box page-margin-top clearfix">
+										<label>PREFFERED TIME FRAME</label>
+										<input type="hidden" name="time-frame-label" value="PREFFERED TIME FRAME">
+										<select name="time-frame" id="time-frame" class="cost-dropdown">
+											<option value="" selected="selected">Choose...</option>
+											<option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+											<option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+											<option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+											<option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+											<option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
+											<option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+											<option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+											<option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+											<option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+										</select>
+										<input type="hidden" class="time-frame" name="time-frame-name" value="">
+									</div>*@
+									<div class="cost-calculator-box page-margin-top clearfix">
+										<label>ВЫБЕРИТЕ УСЛУГУ(И)</label>
+										<ul style="padding-top:20px">
+											<li>
+												<input type="hidden" value="Air Conditioning" name="air-conditioning-label">
+												<input type="checkbox" data-value="1" value="0" name="air-contitioning" class="cost-slider-input type-checkbox" id="air-conditioning">
+												<label for="air-conditioning" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Air Conditioning</label>
+											</li>
+											<li>
+												<input type="hidden" value="Brakes Repair" name="brakes-repair-label">
+												<input type="checkbox" data-value="1" value="0" name="brakes-repair" class="cost-slider-input type-checkbox" id="brakes-repair">
+												<label for="brakes-repair" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Brakes Repair</label>
+											</li>
+											<li>
+												<input type="hidden" value="Engine Diagnostics" name="engine-diagnostics-label">
+												<input type="checkbox" data-value="1" value="0" name="engine-diagnostics" class="cost-slider-input type-checkbox" id="engine-diagnostics">
+												<label for="engine-diagnostics" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Engine Diagnostics</label>
+											</li>
+											<li>
+												<input type="hidden" value="Heating &amp; Cooling" name="heating-cooling-label">
+												<input type="checkbox" data-value="1" value="1" checked="checked" name="heating-cooling" class="cost-slider-input type-checkbox" id="heating-cooling">
+												<label for="heating-cooling" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Heating&amp;Cooling</label>
+											</li>
+											<li>
+												<input type="hidden" value="Oil, Lube &amp; Filters" name="oil-lube-filters-label">
+												<input type="checkbox" data-value="1" value="1" checked="checked" name="oil-lube-filters" class="cost-slider-input type-checkbox" id="oil-lube-filters">
+												<label for="oil-lube-filters" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Oil, Lube &amp; Filters</label>
+											</li>
+											<li>
+												<input type="hidden" value="Steering &amp; Suspension" name="steering-suspension-label">
+												<input type="checkbox" data-value="1" value="0" name="steering-suspension" class="cost-slider-input type-checkbox" id="steering-suspension">
+												<label for="steering-suspension" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Steering&amp;Suspension</label>
+											</li>
+										</ul>
+										@*<ul class="checkboxes-list margin-top-20">
+											<li>
+												<input type="hidden" value="Air Conditioning" name="air-conditioning-label">
+												<input type="checkbox" data-value="1" value="0" name="air-contitioning" class="cost-slider-input type-checkbox" id="air-conditioning">
+												<label for="air-conditioning" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Air Conditioning</label>
+											</li>
+											<li>
+												<input type="hidden" value="Brakes Repair" name="brakes-repair-label">
+												<input type="checkbox" data-value="1" value="0" name="brakes-repair" class="cost-slider-input type-checkbox" id="brakes-repair">
+												<label for="brakes-repair" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Brakes Repair</label>
+											</li>
+											<li>
+												<input type="hidden" value="Engine Diagnostics" name="engine-diagnostics-label">
+												<input type="checkbox" data-value="1" value="0" name="engine-diagnostics" class="cost-slider-input type-checkbox" id="engine-diagnostics">
+												<label for="engine-diagnostics" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Engine Diagnostics</label>
+											</li>
+										</ul>
+										<ul class="checkboxes-list top-border-none">
+											<li>
+												<input type="hidden" value="Heating &amp; Cooling" name="heating-cooling-label">
+												<input type="checkbox" data-value="1" value="1" checked="checked" name="heating-cooling" class="cost-slider-input type-checkbox" id="heating-cooling">
+												<label for="heating-cooling" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Heating&amp;Cooling</label>
+											</li>
+											<li>
+												<input type="hidden" value="Oil, Lube &amp; Filters" name="oil-lube-filters-label">
+												<input type="checkbox" data-value="1" value="1" checked="checked" name="oil-lube-filters" class="cost-slider-input type-checkbox" id="oil-lube-filters">
+												<label for="oil-lube-filters" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Oil, Lube &amp; Filters</label>
+											</li>
+											<li>
+												<input type="hidden" value="Steering &amp; Suspension" name="steering-suspension-label">
+												<input type="checkbox" data-value="1" value="0" name="steering-suspension" class="cost-slider-input type-checkbox" id="steering-suspension">
+												<label for="steering-suspension" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Steering&amp;Suspension</label>
+											</li>
+										</ul>
+										<ul class="checkboxes-list top-border-none">
+											<li>
+												<input type="hidden" value="Transmission Repair" name="transmission-repair-label">
+												<input type="checkbox" data-value="1" value="0" name="transmission-repair" class="cost-slider-input type-checkbox" id="transmission-repair">
+												<label for="transmission-repair" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Transmission Repair</label>
+											</li>
+											<li>
+												<input type="hidden" value="Wheel Alignment" name="wheel-alignment-label">
+												<input type="checkbox" data-value="1" value="0" name="wheel-alignment" class="cost-slider-input type-checkbox" id="wheel-alignment">
+												<label for="wheel-alignment" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Wheel Alignment</label>
+											</li>
+										</ul>*@
+									</div>
+								</fieldset>
+								<fieldset class="column column-1-2">
+									<label>КОНТАКТНЫЕ ДАННЫЕ</label>
+									<input class="text-input" name="name" type="text" value="@Model.UserName" placeholder="Имя *">
+									<input class="text-input" name="email" type="text" value="@Model.Email" placeholder="Эл. Адрес *">
+									<input class="text-input" name="phone" type="text" value="Контактный телефон" placeholder="Контактный телефон">
+									<textarea class="margin-top-20" name="message_appointment" placeholder="Сломалась машина? Подробно опишите проблему">Сломалась машина? Подробно опишите проблему</textarea>
+									<input type="hidden" name="action" value="contact_form" />
+									<input type="hidden" name="form_type" value="appointment">
+									<a class="more margin-top-20 display-block submit-contact-form"><span>ОТПРАВИТЬ</span></a>
+								</fieldset>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row dark-gray footer-row full-width padding-top-30 padding-bottom-50">
+				<div class="row row-4-4 top-border page-padding-top">
+					<div class="column column-1-4">
+						<h6 class="box-header">О НАС</h6>
+						<ul class="list simple margin-top-20">
+							<li>Ростов, Россия (86394)</li>
+							<li>Ул. Заводская 165/3</li>
+							<li><span>Контактный номер:</span>+7(86394-111-11)</li>
+							<li><span>E-mail:</span><a href="mailto:carservice@mail.com">carservice@mail.com</a></li>
+						</ul>
+						<ul class="social-icons gray margin-top-26">
+							<li>
+								<a target="_blank" href="#" class="social-facebook" title="facebook"></a>
+							</li>
+							<li>
+								<a target="_blank" href="#" class="social-twitter" title="twitter"></a>
+							</li>
+							<li>
+								<a target="_blank" href="#" class="social-linkedin" title="linkedin"></a>
+							</li>
+							<li>
+								<a href="#" class="social-pinterest" title="pinterest"></a>
+							</li>
+						</ul>
+					</div>
+					<div class="column column-1-4">
+						<h6 class="box-header">ЧАСЫ РАБОТЫ</h6>
+						<ul class="list simple margin-top-20">
+							<li><span>Понедельник:</span>8:00 - 17:30</li>
+							<li><span>Вторник:</span>8:00 - 17:30</li>
+							<li><span>Среда:</span>8:00 - 17:30</li>
+							<li><span>Четверг:</span>9:00 - 18:30</li>
+							<li><span>Патника:</span>9:00 - 18:30</li>
+							<li><span>Суббота:</span>8:00 - 17:00</li>
+							<li><span>Воскресенье:</span>Выходной</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	</div>
+		<a href="#top" class="scroll-top animated-element template-arrow-up" title="Scroll to top"></a>
+		<div class="background-overlay"></div>
+		<!--js-->
+		<script type="text/javascript" src="~/js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery-migrate-1.4.1.min.js"></script>
+		<!--slider revolution-->			
+		<script type="text/javascript" src="~/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+		<script type="text/javascript" src="~/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.ba-bbq.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery-ui-1.11.4.custom.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.ui.touch-punch.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.isotope.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.easing.1.3.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+		<script type="text/javascript" src="~/js/jquery.touchSwipe.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.transit.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.hint.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.costCalculator.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.parallax.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.prettyPhoto.js"></script>
+		<script type="text/javascript" src="~/js/jquery.qtip.min.js"></script>
+		<script type="text/javascript" src="~/js/jquery.blockUI.min.js"></script>
+		<script type="text/javascript" src="~/js/main.js"></script>
+		<script type="text/javascript" src="~/js/odometer.min.js"></script>
+</body>
