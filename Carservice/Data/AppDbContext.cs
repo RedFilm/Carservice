@@ -1,4 +1,4 @@
-﻿using Carservice.Models;
+﻿using Carservice.Models.Repair;
 using Carservice.Models.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +15,7 @@ namespace Carservice.Data
 
         public DbSet<Client> Clients { get; set; }
 		public DbSet<Employee> Employees { get; set; }
-        public DbSet<Chat> Chats { get; set; }  
-	}
+        public DbSet<RepairRequest> RepairRequests { get; set; }
+        public DbSet<RequestStatus> RequestStatuses { get; set; }
+    }
 }

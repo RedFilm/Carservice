@@ -116,198 +116,6 @@
 									</li>
 								</ul>
 							</nav>
-							@*<div class="mobile-menu-container">
-								<div class="mobile-menu-divider"></div>
-								<nav>
-									<ul class="mobile-menu collapsible-mobile-submenus">
-										<li>
-											<a href="index.html" title="Home">
-												Home
-											</a>
-										</li>
-										<li>
-											<a href="services.html" title="Services">
-												Services
-											</a>
-											<a href="#" class="template-arrow-menu"></a>
-											<ul>
-												<li>
-													<a href="service_engine_diagnostics.html" title="Engine Diagnostics">
-														Engine Diagnostics
-													</a>
-												</li>
-												<li>
-													<a href="service_lube_oil_filters.html" title="Lube, Oil and Filters">
-														Lube, Oil and Filters
-													</a>
-												</li>
-												<li>
-													<a href="service_belts_hoses.html" title="Belts and Hoses">
-														Belts and Hoses
-													</a>
-												</li>
-												<li>
-													<a href="service_air_conditioning.html" title="Air Conditioning">
-														Air Conditioning
-													</a>
-												</li>
-												<li>
-													<a href="service_brake_repair.html" title="Brake Repair">
-														Brake Repair
-													</a>
-												</li>
-												<li>
-													<a href="service_tire_wheel.html" title="Tire and Wheel Services">
-														Tire and Wheel Services
-													</a>
-												</li>
-											</ul>
-										</li>
-										<li>
-											<a href="galleries.html" title="Gallery">
-												Gallery
-											</a>
-											<a href="#" class="template-arrow-menu"></a>
-											<ul>
-												<li>
-													<a href="gallery_engine_diagnostics.html" title="Engine Diagnostics">
-														Engine Diagnostics
-													</a>
-												</li>
-												<li>
-													<a href="gallery_oil_change.html" title="Oil Change">
-														Oil Change
-													</a>
-												</li>
-												<li>
-													<a href="gallery_belts_hoses.html" title="Belts and Hoses">
-														Belts and Hoses
-													</a>
-												</li>
-												<li>
-													<a href="gallery_tire_change.html" title="Tire Change">
-														Tire Change
-													</a>
-												</li>
-												<li>
-													<a href="gallery_wheel_services.html" title="Wheel Services">
-														Wheel Services
-													</a>
-												</li>
-												<li>
-													<a href="gallery_lube_services.html" title="Lube Services">
-														Lube Services
-													</a>
-												</li>
-												<li>
-													<a href="gallery_brake_repair.html" title="Brake Repair">
-														Brake Repair
-													</a>
-												</li>
-												<li>
-													<a href="gallery_other_car_services.html" title="Other Car Services">
-														Other Car Services
-													</a>
-												</li>
-											</ul>
-										</li>
-										<li>
-											<a href="about.html" title="Pages">
-												Pages
-											</a>
-											<a href="#" class="template-arrow-menu"></a>
-											<ul>
-												<li>
-													<a href="about.html" title="About">
-														About
-													</a>
-												</li>
-												<li>
-													<a href="404.html" title="404 Not Found">
-														404 Not Found
-													</a>
-												</li>
-												<li>
-													<a href="services.html" title="Services">
-														Services
-													</a>
-												</li>
-												<li>
-													<a href="service_engine_diagnostics.html" title="Single Service">
-														Single Service
-													</a>
-												</li>
-												<li>
-													<a href="galleries.html" title="Galleries">
-														Galleries
-													</a>
-												</li>
-												<li>
-													<a href="gallery_engine_diagnostics.html" title="Single Project">
-														Single Gallery
-													</a>
-												</li>
-											</ul>
-										</li>
-										<li>
-											<a href="blog.html" title="Blog">
-												Blog
-											</a>
-											<a href="#" class="template-arrow-menu"></a>
-											<ul>
-												<li>
-													<a href="blog.html" title="Blog">
-														Blog
-													</a>
-												</li>
-												<li>
-													<a href="blog_left_sidebar.html" title="Blog">
-														Blog Left Sidebar
-													</a>
-												</li>
-												<li>
-													<a href="blog_2_columns.html" title="Blog 2 Columns">
-														Blog 2 Columns
-													</a>
-												</li>
-												<li>
-													<a href="post.html" title="Single Post">
-														Single Post
-													</a>
-												</li>
-												<li>
-													<a href="search.html?s=ipsum" title="Search Template">
-														Search Template
-													</a>
-												</li>
-											</ul>
-										</li>
-										<li class="selected">
-											<a href="appointment.html" title="Appointment">
-												Appointment
-											</a>
-										</li>
-										<li class="left-flyout">
-											<a href="contact.html" title="Contact">
-												Contact
-											</a>
-											<a href="#" class="template-arrow-menu"></a>
-											<ul>
-												<li>
-													<a href="contact.html" title="Contact Style 1">
-														Contact Style 1
-													</a>
-												</li>
-												<li>
-													<a href="contact_2.html" title="Contact Style 2">
-														Contact Style 2
-													</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</nav>
-							</div>*@
 						</div>
 					</div>
 				</div>
@@ -324,14 +132,14 @@
 						</div>
 					</div>
 					<div class="row page-margin-top">
-						<form class="contact-form cost-calculator-container" id="contact-form" method="post" action="">
+						<form class="contact-form cost-calculator-container" id="contact-form" method="post" asp-controller="Home" asp-action="RepairRequest">
 							<div class="row">
 								<fieldset class="column column-1-3">
 									<div class="cost-calculator-box clearfix">
 										<label>ГОД ВЫПУСКА</label>
 										<input type="hidden" name="vehicle-year-label" value="VEHICLE YEAR">
 										<div class="cost-slider-container">
-											<input id="vehicle-year" class="cost-slider-input" name="vehicle-year" type="number" value="2008">
+											<input id="vehicle-year" class="cost-slider-input" type="number" value="2008" asp-for="MadeYear">
 											<div class="cost-slider" data-value="2008" data-step="1" data-min="1980" data-max="2023" data-input="vehicle-year"></div>
 										</div>
 									</div>
@@ -358,14 +166,14 @@
 											<option value="Saab">Saab</option>
 											<option value="Saleen">Saleen</option>
 										</select>
-										<input type="hidden" class="vehicle-make" name="vehicle-make-name" value="">
+										<input type="hidden" class="vehicle-make" asp-for="CarBrand">
 									</div>
 								</fieldset>
 								<fieldset class="column column-1-3">
 									<div class="cost-calculator-box clearfix">
 										<label>ПРОБЕГ</label>
 										<input type="hidden" name="vehicle-mileage-label" value="VEHICLE MILEAGE">
-										<input id="vehicle-mileage" class="cost-slider-input big" name="vehicle-mileage" type="number" value="" placeholder="Пробег">
+										<input id="vehicle-mileage" class="cost-slider-input big" type="number" placeholder="Пробег" asp-for="Mileage">
 									</div>
 								</fieldset>
 							</div>
@@ -480,10 +288,10 @@
 								</fieldset>
 								<fieldset class="column column-1-2">
 									<label>КОНТАКТНЫЕ ДАННЫЕ</label>
-									<input class="text-input" name="name" type="text" value="@Model.UserName" placeholder="Имя *">
-									<input class="text-input" name="email" type="text" value="@Model.Email" placeholder="Эл. Адрес *">
-									<input class="text-input" name="phone" type="text" value="Контактный телефон" placeholder="Контактный телефон">
-									<textarea class="margin-top-20" name="message_appointment" placeholder="Сломалась машина? Подробно опишите проблему">Сломалась машина? Подробно опишите проблему</textarea>
+									<input class="text-input" type="text" value="@Model.UserName" asp-for="UserName" placeholder="Имя *">
+									<input class="text-input" type="text" value="@Model.Email" asp-for="Email" placeholder="Эл. Адрес *">
+									<input class="text-input" type="text" placeholder="Контактный телефон" asp-for="ContactNumber">
+									<textarea class="margin-top-20" placeholder="Сломалась машина? Подробно опишите проблему" asp-for="RequestText">Сломалась машина? Подробно опишите проблему</textarea>
 									<input type="hidden" name="action" value="contact_form" />
 									<input type="hidden" name="form_type" value="appointment">
 									<a class="more margin-top-20 display-block submit-contact-form"><span>ОТПРАВИТЬ</span></a>

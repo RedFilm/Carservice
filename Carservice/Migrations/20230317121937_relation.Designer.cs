@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carservice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230225125447_second")]
-    partial class second
+    [Migration("20230317121937_relation")]
+    partial class relation
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,78 @@ namespace Carservice.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Carservice.Models.Repair.RepairRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CarBrand")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MadeYear")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Mileage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RequestText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Servise")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("RequestStatusId");
+
+                    b.ToTable("RepairRequests");
+                });
+
+            modelBuilder.Entity("Carservice.Models.Repair.RequestStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestStatuses");
+                });
 
             modelBuilder.Entity("Carservice.Models.Users.AppUser", b =>
                 {
@@ -247,7 +319,7 @@ namespace Carservice.Migrations
                 {
                     b.HasBaseType("Carservice.Models.Users.AppUser");
 
-                    b.Property<int>("PurchasedServices")
+                    b.Property<int>("PurchasedServicesCount")
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("Client");
@@ -260,7 +332,33 @@ namespace Carservice.Migrations
                     b.Property<int>("PassportNumber")
                         .HasColumnType("int");
 
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Salary")
+                        .HasColumnType("int");
+
                     b.HasDiscriminator().HasValue("Employee");
+                });
+
+            modelBuilder.Entity("Carservice.Models.Repair.RepairRequest", b =>
+                {
+                    b.HasOne("Carservice.Models.Users.AppUser", "AppUser")
+                        .WithMany("RepairRequests")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Carservice.Models.Repair.RequestStatus", "Status")
+                        .WithMany()
+                        .HasForeignKey("RequestStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Status");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -312,6 +410,11 @@ namespace Carservice.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Carservice.Models.Users.AppUser", b =>
+                {
+                    b.Navigation("RepairRequests");
                 });
 #pragma warning restore 612, 618
         }

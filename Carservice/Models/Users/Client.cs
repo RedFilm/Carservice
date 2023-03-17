@@ -4,8 +4,6 @@ namespace Carservice.Models.Users
 {
     public class Client : AppUser
     {
-        public override string? Id { get; set; }
-        public int PurchasedServices { get; set; }
-        public List<Chat>? Chats { get; set; }
+        public int PurchasedServicesCount { get; set; }
     }
 }

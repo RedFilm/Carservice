@@ -1,4 +1,5 @@
 ﻿using Carservice.Data;
+using Carservice.Models.Repair;
 using Carservice.Models.Users;
 using Carservice.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -39,7 +40,22 @@ namespace Carservice.Controllers
             return View(vm);
         }
 
-        [HttpGet]
+		[Authorize]
+		[HttpPost]
+		public async Task<IActionResult> RepairRequest(RepairRequestViewModel repairRequestVm)
+		{
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid request form");
+            }
+
+            var request = new RepairRequest();
+                
+
+			return Ok();
+		}
+
+		[HttpGet]
         public IActionResult Reviews() => View();
 
 

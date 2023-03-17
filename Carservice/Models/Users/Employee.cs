@@ -4,8 +4,8 @@ namespace Carservice.Models.Users
 {
 	public class Employee : AppUser
     {
-		public override string? Id { get; set; }
 		public int PassportNumber { get; set; }
-		public List<Chat>? Chats { get; set; }
+		public string Position { get; set; } = "";
+		public int Salary { get; set; }
 	}
 }
