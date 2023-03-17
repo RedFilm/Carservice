@@ -347,15 +347,15 @@ namespace Carservice.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Carservice.Models.Repair.RequestStatus", "Status")
-                        .WithMany()
+                    b.HasOne("Carservice.Models.Repair.RequestStatus", "RequestStatus")
+                        .WithMany("RepairRequests")
                         .HasForeignKey("RequestStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AppUser");
 
-                    b.Navigation("Status");
+                    b.Navigation("RequestStatus");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -407,6 +407,11 @@ namespace Carservice.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Carservice.Models.Repair.RequestStatus", b =>
+                {
+                    b.Navigation("RepairRequests");
                 });
 
             modelBuilder.Entity("Carservice.Models.Users.AppUser", b =>

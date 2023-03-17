@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Carservice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230317121458_requestStatuses")]
-    partial class requestStatuses
+    [Migration("20230317145045_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,15 +56,14 @@ namespace Carservice.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("RequestStatusId")
+                        .HasColumnType("int");
+
                     b.Property<string>("RequestText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Servise")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -75,6 +74,8 @@ namespace Carservice.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId");
+
+                    b.HasIndex("RequestStatusId");
 
                     b.ToTable("RepairRequests");
                 });
@@ -349,7 +350,15 @@ namespace Carservice.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Carservice.Models.Repair.RequestStatus", "RequestStatus")
+                        .WithMany("RepairRequests")
+                        .HasForeignKey("RequestStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("AppUser");
+
+                    b.Navigation("RequestStatus");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -401,6 +410,11 @@ namespace Carservice.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Carservice.Models.Repair.RequestStatus", b =>
+                {
+                    b.Navigation("RepairRequests");
                 });
 
             modelBuilder.Entity("Carservice.Models.Users.AppUser", b =>

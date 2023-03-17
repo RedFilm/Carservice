@@ -9,6 +9,6 @@ namespace Carservice.Models.Users
 		public string LastName { get; set; } = "";
 		public string SurName { get; set; } = "";
 
-		public List<RepairRequest> RepairRequests { get; set; }
+		public List<RepairRequest>? RepairRequests { get; set; }
 	}
 }

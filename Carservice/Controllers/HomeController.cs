@@ -5,6 +5,7 @@ using Carservice.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Carservice.Controllers
@@ -40,19 +41,34 @@ namespace Carservice.Controllers
             return View(vm);
         }
 
-		[Authorize]
-		[HttpPost]
-		public async Task<IActionResult> RepairRequest(RepairRequestViewModel repairRequestVm)
-		{
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> RepairRequest(RepairRequestViewModel repairRequestVm)
+        {
             if (!ModelState.IsValid)
             {
                 return BadRequest("Invalid request form");
             }
 
-            var request = new RepairRequest();
-                
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var waitStatus = await _ctx.RequestStatuses.FirstOrDefaultAsync(s => s.Name == "Waiting");
 
-			return Ok();
+            var request = new RepairRequest()
+            {
+                AppUserId = user.Id,
+                RequestStatusId = waitStatus.Id,
+                MadeYear = repairRequestVm.MadeYear,
+                CarBrand = repairRequestVm.CarBrand,
+                Mileage = repairRequestVm.Mileage,
+                UserName = repairRequestVm.UserName,
+                Email = repairRequestVm.Email,
+                ContactNumber = repairRequestVm.ContactNumber,
+                RequestText = repairRequestVm.RequestText
+            };
+            await _ctx.RepairRequests.AddAsync(request);
+            await _ctx.SaveChangesAsync();
+
+			return RedirectToAction("Index", "Home");
 		}
 
 		[HttpGet]

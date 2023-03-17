@@ -292,9 +292,10 @@
 									<input class="text-input" type="text" value="@Model.Email" asp-for="Email" placeholder="Эл. Адрес *">
 									<input class="text-input" type="text" placeholder="Контактный телефон" asp-for="ContactNumber">
 									<textarea class="margin-top-20" placeholder="Сломалась машина? Подробно опишите проблему" asp-for="RequestText">Сломалась машина? Подробно опишите проблему</textarea>
-									<input type="hidden" name="action" value="contact_form" />
-									<input type="hidden" name="form_type" value="appointment">
-									<a class="more margin-top-20 display-block submit-contact-form"><span>ОТПРАВИТЬ</span></a>
+									@*<input type="hidden" name="action" value="contact_form" />
+									<input type="hidden" name="form_type" value="appointment">*@
+									<input class="more margin-top-20 display-block submit-contact-form" type="submit" value="ОТПРАВИТЬ"/>
+									@*<a class="more margin-top-20 display-block submit-contact-form"><span>ОТПРАВИТЬ</span></a>*@
 								</fieldset>
 							</div>
 						</form>
@@ -364,5 +365,5 @@
 		<script type="text/javascript" src="~/js/jquery.qtip.min.js"></script>
 		<script type="text/javascript" src="~/js/jquery.blockUI.min.js"></script>
 		<script type="text/javascript" src="~/js/main.js"></script>
-		<script type="text/javascript" src="~/js/odometer.min.js"></script>
+		@*<script type="text/javascript" src="~/js/odometer.min.js"></script>*@
 </body>

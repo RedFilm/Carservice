@@ -4,6 +4,7 @@ namespace Carservice.ViewModels
 {
 	public class RepairRequestViewModel
 	{
+		public string? RequestStatus { get; set; } = "";
 		public int MadeYear { get; set; }
 		public string? CarBrand { get; set; } = "";
 		public string? Mileage { get; set; } = "";

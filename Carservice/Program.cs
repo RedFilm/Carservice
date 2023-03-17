@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Carservice.Data;
 using Microsoft.AspNetCore.Identity;
 using Carservice.Models.Users;
+using Carservice.Models.Repair;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,8 +64,20 @@ try
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     context.Database.Migrate();
 
+    if (!context.RequestStatuses.Any(s => s.Name == "Waiting" || s.Name == "Active" || s.Name == "Done"))
+    {
+        var waiting = new RequestStatus() { Name = "Waiting" };
+		var active = new RequestStatus() { Name = "Active" };
+		var done = new RequestStatus() { Name = "Done" };
 
-    var adminRole = new IdentityRole("Manager");
+		context.RequestStatuses.AddAsync(waiting).GetAwaiter().GetResult();
+		context.RequestStatuses.AddAsync(active).GetAwaiter().GetResult();
+		context.RequestStatuses.AddAsync(done).GetAwaiter().GetResult();
+
+        context.SaveChangesAsync().GetAwaiter().GetResult();
+	}
+
+	var adminRole = new IdentityRole("Manager");
     if (!context.Roles.Any(r => r.Name == "Manager"))
     {
         roleMgr.CreateAsync(adminRole).GetAwaiter().GetResult();

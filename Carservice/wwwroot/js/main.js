@@ -768,136 +768,136 @@ jQuery(document).ready(function($){
 	});
 	
 	//contact form
-	if($(".contact-form").length)
-	{
-		$(".contact-form").each(function(){
-			$(this)[0].reset();
-			$(this).find("input[type='hidden']").each(function(){
-				if(typeof($(this).data("default"))!="undefined")
-					$(this).val($(this).data("default"));
-			});
-			$(this).find(".cost-calculator-price").costCalculator("calculate");
-		});
-		$(".submit-contact-form").on("click", function(event){
-			event.preventDefault();
-			$("#contact-form").submit();
-		});
-	}
-	$(".contact-form").submit(function(event){
-		event.preventDefault();
-		var data = $(this).serializeArray();
-		var self = $(this);
-		//if($(this).find(".total-cost").length)
-		//	data.push({name: 'total-cost', value: $(this).find(".total-cost").val()});
-		self.find(".block").block({
-			message: false,
-			overlayCSS: {
-				opacity:'0.3',
-				"backgroundColor": "#FFF"
-			}
-		});
+	//if($(".contact-form").length)
+	//{
+	//	$(".contact-form").each(function(){
+	//		$(this)[0].reset();
+	//		$(this).find("input[type='hidden']").each(function(){
+	//			if(typeof($(this).data("default"))!="undefined")
+	//				$(this).val($(this).data("default"));
+	//		});
+	//		$(this).find(".cost-calculator-price").costCalculator("calculate");
+	//	});
+	//	$(".submit-contact-form").on("click", function(event){
+	//		event.preventDefault();
+	//		$("#contact-form").submit();
+	//	});
+	//}
+	//$(".contact-form").submit(function(event){
+	//	event.preventDefault();
+	//	var data = $(this).serializeArray();
+	//	var self = $(this);
+	//	//if($(this).find(".total-cost").length)
+	//	//	data.push({name: 'total-cost', value: $(this).find(".total-cost").val()});
+	//	self.find(".block").block({
+	//		message: false,
+	//		overlayCSS: {
+	//			opacity:'0.3',
+	//			"backgroundColor": "#FFF"
+	//		}
+	//	});
 		
-		$.ajax({
-			url: self.attr("action"),
-			data: data,
-			type: "post",
-			dataType: "json",
-			success: function(json){
-				self.find(".submit-contact-form, [name='submit'], [name='name'], [name='email'], [name='message']").qtip('destroy');
-				if(typeof(json.isOk)!="undefined" && json.isOk)
-				{
-					if(typeof(json.submit_message)!="undefined" && json.submit_message!="")
-					{
-						self.find(".submit-contact-form").qtip(
-						{
-							style: {
-								classes: 'ui-tooltip-success'
-							},
-							content: { 
-								text: json.submit_message 
-							},
-							position: { 
-								my: "right center",
-								at: "left center" 
-							}
-						}).qtip('show');
-						self[0].reset();
-						self.find(".cost-slider-input").trigger("change");
-						self.find(".cost-dropdown").selectmenu("refresh");
-						self.find("input[type='text'], textarea").trigger("focus").trigger("blur");
-					}
-				}
-				else
-				{
-					if(typeof(json.submit_message)!="undefined" && json.submit_message!="")
-					{
-						self.find(".submit-contact-form").qtip(
-						{
-							style: {
-								classes: 'ui-tooltip-error'
-							},
-							content: { 
-								text: json.submit_message 
-							},
-							position: { 
-								my: "right center",
-								at: "left center" 
-							}
-						}).qtip('show');
-					}
-					if(typeof(json.error_name)!="undefined" && json.error_name!="")
-					{
-						self.find("[name='name']").qtip(
-						{
-							style: {
-								classes: 'ui-tooltip-error'
-							},
-							content: { 
-								text: json.error_name 
-							},
-							position: { 
-								my: "bottom center",
-								at: "top center" 
-							}
-						}).qtip('show');
-					}
-					if(typeof(json.error_email)!="undefined" && json.error_email!="")
-					{
-						self.find("[name='email']").qtip(
-						{
-							style: {
-								classes: 'ui-tooltip-error'
-							},
-							content: { 
-								text: json.error_email 
-							},
-							position: { 
-								my: "bottom center",
-								at: "top center" 
-							}
-						}).qtip('show');
-					}
-					if(typeof(json.error_message)!="undefined" && json.error_message!="")
-					{
-						self.find("[name='message']").qtip(
-						{
-							style: {
-								classes: 'ui-tooltip-error'
-							},
-							content: { 
-								text: json.error_message 
-							},
-							position: { 
-								my: "bottom center",
-								at: "top center" 
-							}
-						}).qtip('show');
-					}
-				}
-				self.find(".block").unblock();
-			}
-		});
-	});
+	//	$.ajax({
+	//		url: self.attr("action"),
+	//		data: data,
+	//		type: "post",
+	//		dataType: "json",
+	//		success: function(json){
+	//			self.find(".submit-contact-form, [name='submit'], [name='name'], [name='email'], [name='message']").qtip('destroy');
+	//			if(typeof(json.isOk)!="undefined" && json.isOk)
+	//			{
+	//				if(typeof(json.submit_message)!="undefined" && json.submit_message!="")
+	//				{
+	//					self.find(".submit-contact-form").qtip(
+	//					{
+	//						style: {
+	//							classes: 'ui-tooltip-success'
+	//						},
+	//						content: { 
+	//							text: json.submit_message 
+	//						},
+	//						position: { 
+	//							my: "right center",
+	//							at: "left center" 
+	//						}
+	//					}).qtip('show');
+	//					self[0].reset();
+	//					self.find(".cost-slider-input").trigger("change");
+	//					self.find(".cost-dropdown").selectmenu("refresh");
+	//					self.find("input[type='text'], textarea").trigger("focus").trigger("blur");
+	//				}
+	//			}
+	//			else
+	//			{
+	//				if(typeof(json.submit_message)!="undefined" && json.submit_message!="")
+	//				{
+	//					self.find(".submit-contact-form").qtip(
+	//					{
+	//						style: {
+	//							classes: 'ui-tooltip-error'
+	//						},
+	//						content: { 
+	//							text: json.submit_message 
+	//						},
+	//						position: { 
+	//							my: "right center",
+	//							at: "left center" 
+	//						}
+	//					}).qtip('show');
+	//				}
+	//				if(typeof(json.error_name)!="undefined" && json.error_name!="")
+	//				{
+	//					self.find("[name='name']").qtip(
+	//					{
+	//						style: {
+	//							classes: 'ui-tooltip-error'
+	//						},
+	//						content: { 
+	//							text: json.error_name 
+	//						},
+	//						position: { 
+	//							my: "bottom center",
+	//							at: "top center" 
+	//						}
+	//					}).qtip('show');
+	//				}
+	//				if(typeof(json.error_email)!="undefined" && json.error_email!="")
+	//				{
+	//					self.find("[name='email']").qtip(
+	//					{
+	//						style: {
+	//							classes: 'ui-tooltip-error'
+	//						},
+	//						content: { 
+	//							text: json.error_email 
+	//						},
+	//						position: { 
+	//							my: "bottom center",
+	//							at: "top center" 
+	//						}
+	//					}).qtip('show');
+	//				}
+	//				if(typeof(json.error_message)!="undefined" && json.error_message!="")
+	//				{
+	//					self.find("[name='message']").qtip(
+	//					{
+	//						style: {
+	//							classes: 'ui-tooltip-error'
+	//						},
+	//						content: { 
+	//							text: json.error_message 
+	//						},
+	//						position: { 
+	//							my: "bottom center",
+	//							at: "top center" 
+	//						}
+	//					}).qtip('show');
+	//				}
+	//			}
+	//			self.find(".block").unblock();
+	//		}
+	//	});
+	//});
 
 	if($(".header-container").hasClass("sticky"))
 		menu_position = $(".header-container").offset().top;
