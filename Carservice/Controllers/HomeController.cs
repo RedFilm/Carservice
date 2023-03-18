@@ -45,10 +45,10 @@ namespace Carservice.Controllers
         [HttpPost]
         public async Task<IActionResult> RepairRequest(RepairRequestViewModel repairRequestVm)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest("Invalid request form");
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest("Invalid request form");
+            //}
 
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var waitStatus = await _ctx.RequestStatuses.FirstOrDefaultAsync(s => s.Name == "Waiting");

@@ -139,7 +139,7 @@
 										<label>ГОД ВЫПУСКА</label>
 										<input type="hidden" name="vehicle-year-label" value="VEHICLE YEAR">
 										<div class="cost-slider-container">
-											<input id="vehicle-year" class="cost-slider-input" type="number" value="2008" asp-for="MadeYear">
+											<input id="vehicle-year" class="cost-slider-input" type="number" value="2008" asp-for="MadeYear" required>
 											<div class="cost-slider" data-value="2008" data-step="1" data-min="1980" data-max="2023" data-input="vehicle-year"></div>
 										</div>
 									</div>
@@ -148,7 +148,7 @@
 									<div class="cost-calculator-box clearfix">
 										<label>МАРКА</label>
 										<input type="hidden" name="vehicle-make-label" value="VEHICLE MAKE">
-										<select name="vehicle-make" id="vehicle-make" class="cost-dropdown">
+										<select name="vehicle-make" id="vehicle-make" class="cost-dropdown" required>
 											<option value="" selected="selected">Выбрать...</option>
 											<option value="General Motors">General Motors</option>
 											<option value="Land Rover">Land Rover</option>
@@ -166,14 +166,14 @@
 											<option value="Saab">Saab</option>
 											<option value="Saleen">Saleen</option>
 										</select>
-										<input type="hidden" class="vehicle-make" asp-for="CarBrand">
+										<input type="hidden" class="vehicle-make" asp-for="CarBrand" required>
 									</div>
 								</fieldset>
 								<fieldset class="column column-1-3">
 									<div class="cost-calculator-box clearfix">
 										<label>ПРОБЕГ</label>
 										<input type="hidden" name="vehicle-mileage-label" value="VEHICLE MILEAGE">
-										<input id="vehicle-mileage" class="cost-slider-input big" type="number" placeholder="Пробег" asp-for="Mileage">
+										<input id="vehicle-mileage" class="cost-slider-input big" type="number" placeholder="Пробег" asp-for="Mileage" required>
 									</div>
 								</fieldset>
 							</div>
@@ -288,9 +288,9 @@
 								</fieldset>
 								<fieldset class="column column-1-2">
 									<label>КОНТАКТНЫЕ ДАННЫЕ</label>
-									<input class="text-input" type="text" value="@Model.UserName" asp-for="UserName" placeholder="Имя *">
-									<input class="text-input" type="text" value="@Model.Email" asp-for="Email" placeholder="Эл. Адрес *">
-									<input class="text-input" type="text" placeholder="Контактный телефон" asp-for="ContactNumber">
+									<input class="text-input" type="text" value="@Model.UserName" asp-for="UserName"  placeholder="Имя *" required>
+									<input class="text-input" type="text" value="@Model.Email" asp-for="Email" placeholder="Эл. Адрес *" required>
+									<input class="text-input" type="text" asp-for="ContactNumber" placeholder="Контактный телефон" required>
 									<textarea class="margin-top-20" placeholder="Сломалась машина? Подробно опишите проблему" asp-for="RequestText">Сломалась машина? Подробно опишите проблему</textarea>
 									@*<input type="hidden" name="action" value="contact_form" />
 									<input type="hidden" name="form_type" value="appointment">*@

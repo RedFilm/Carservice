@@ -57,11 +57,9 @@ namespace Carservice.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RequestText")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Servise")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")

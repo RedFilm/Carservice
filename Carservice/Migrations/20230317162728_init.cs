@@ -188,11 +188,11 @@ namespace Carservice.Migrations
                     MadeYear = table.Column<int>(type: "int", nullable: false),
                     CarBrand = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Mileage = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Servise = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Servise = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RequestText = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RequestText = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

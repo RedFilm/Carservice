@@ -12,10 +12,10 @@ namespace Carservice.Models.Repair
         public int MadeYear { get; set; }
         public string CarBrand { get; set; } = "";
         public string Mileage { get; set; } = "";
-        public string Servise { get; set; } = "";
+        public string? Servise { get; set; } = "";
         public string UserName { get; set; } = "";
         public string Email { get; set; } = "";
         public string ContactNumber { get; set; } = "";
-        public string RequestText { get; set; } = "";
+        public string? RequestText { get; set; } = "";
     }
 }
