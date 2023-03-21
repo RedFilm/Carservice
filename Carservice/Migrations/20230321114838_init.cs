@@ -192,7 +192,11 @@ namespace Carservice.Migrations
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RequestText = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    RequestText = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PreferedDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TimeFrame = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VinNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CarNumber = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

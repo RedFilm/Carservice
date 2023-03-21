@@ -1,11 +1,13 @@
 ﻿using Carservice.Data;
 using Carservice.Models.Repair;
 using Carservice.Models.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Carservice.Controllers
 {
+    [Authorize]
     public class ManagerPanelController : Controller
     {
         private SignInManager<AppUser> _signInMnr;

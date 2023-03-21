@@ -94,6 +94,11 @@
 										</a>
 									</li>
 									<li>
+										<a href="#">
+											Ремонт кондиционера
+										</a>
+									</li>
+									<li>
 										<a href="#" >
 											Ремонт тормозов
 										</a>
@@ -164,8 +169,10 @@
 							Год выпуска: @Model.MadeYear; <br />
 							Пробег: @Model.Mileage; <br />
 							Выбранные услуги: Не выбрано; <br />
-							Предпочтительный день: @Model.PreferedDay
-							Время ремонта: @Model.TimeFrame
+							VIN-номер: @Model.VinNumber; <br />
+							Регистрационный номер: @Model.CarNumber; <br />
+							Предпочтительный день: @Model.PreferedDay <br />
+							Время ремонта: @Model.TimeFrame <br />
 							Текст заявки: @Model.RequestText; <br />
 							<br />
 							Статус заявки: Ожидает обработки. <br />
@@ -187,11 +194,11 @@
 									<br />
 								</div>
 							</div>
-							<input style="padding-left: 15px; background-color: white;" type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ"/>
+							@*<input style="padding-left: 15px; background-color: white;" type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ"/>*@
+							<div class="row gray full-width padding-top-54 padding-bottom-61 align-center">
+								<h3><span class="button-label"> </span> <input class="more" type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ" /></h3>
+							</div>
 						</form>
-						<div class="row gray full-width padding-top-54 padding-bottom-61 align-center">
-							<h3><span class="button-label"> </span> <a class="more" asp-controller="" asp-action="" asp-route-id="@Model.AppUserId"> СВЯЗАТЬСЯ С КЛИЕНТОМ</a></h3>
-						</div>
 					</div>
 				</div>
 			</div>

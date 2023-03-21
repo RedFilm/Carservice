@@ -38,6 +38,10 @@ namespace Carservice.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CarNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ContactNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -53,6 +57,9 @@ namespace Carservice.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PreferedDay")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RequestStatusId")
                         .HasColumnType("int");
 
@@ -62,7 +69,14 @@ namespace Carservice.Migrations
                     b.Property<string>("Servise")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TimeFrame")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VinNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

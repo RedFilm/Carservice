@@ -79,6 +79,20 @@ namespace Carservice.Controllers
         public IActionResult Reviews() => View();
 
 
+        [HttpGet]
+        public IActionResult Services()
+        {
+            //var services = _ctx.Services.ToList();
+
+            return View();
+        }
+
+
+
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
