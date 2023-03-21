@@ -17,5 +17,9 @@ namespace Carservice.Models.Repair
         public string Email { get; set; } = "";
         public string ContactNumber { get; set; } = "";
         public string? RequestText { get; set; } = "";
-    }
+        public string? PreferedDay { get; set; } = "";
+        public string? TimeFrame { get; set; } = "";
+		public string VinNumber { get; set; } = "";
+		public string CarNumber { get; set; } = "";
+	}
 }

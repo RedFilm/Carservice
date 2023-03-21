@@ -63,7 +63,11 @@ namespace Carservice.Controllers
                 UserName = repairRequestVm.UserName,
                 Email = repairRequestVm.Email,
                 ContactNumber = repairRequestVm.ContactNumber,
-                RequestText = repairRequestVm.RequestText
+                RequestText = repairRequestVm.RequestText,
+                PreferedDay = repairRequestVm.PreferedDay,
+                TimeFrame = repairRequestVm.TimeFrame,
+                CarNumber = repairRequestVm.CarNumber,
+                VinNumber = repairRequestVm.VinNumber
             };
             await _ctx.RepairRequests.AddAsync(request);
             await _ctx.SaveChangesAsync();

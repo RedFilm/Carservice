@@ -4,7 +4,10 @@
 }
 
 <head>
+
 	<title>Автосервис</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<!--slider revolution-->
 	<link rel="stylesheet" type="text/css" href="~/rs-plugin/css/settings.css" media="screen" />
 	<!--style-->
@@ -179,31 +182,36 @@
 							</div>
 							<div class="row page-margin-top">
 								<fieldset class="column column-1-2">
-									@*<div class="cost-calculator-box clearfix">
+									<div class="cost-calculator-box clearfix">
+										<label>РЕГИСТРАЦИОННЫЙ НОМЕР</label>
+										<input type="hidden" name="vehicle-mileage-label" value="VEHICLE MILEAGE">
+										<input id="vehicle-mileage" class="cost-slider-input big" placeholder="Регистрационный номер" asp-for="CarNumber" required>
+									</div>
+									<div class="cost-calculator-box clearfix">
 										<label>ПРЕДПОЧТИТЕЛЬНАЯ ДАТА РЕМОНТА</label>
-										<input type="hidden" name="appointment-date-label" value="PREFFERED DATE OF APPOINTMENT">
+										<input type="hidden" name="appointment-date-label" value="PREFERED DAY OF APPOINTMENT">
 										<div class="datepicker-container">
 											<span class="ui-icon template-arrow-dropdown"></span>
-											<input id="appointment-date" class="cost-slider-datepicker big" name="appointment-date" value="" placeholder="Предпочтительна дата ремонта">
+											<input id="appointment-date" class="cost-slider-datepicker big" asp-for="PreferedDay" placeholder="Предпочтительна дата ремонта">
 										</div>
 									</div>
 									<div class="cost-calculator-box page-margin-top clearfix">
-										<label>PREFFERED TIME FRAME</label>
+										<label>ПРЕДПОЧТИТЕЛЬНОЕ ВРЕМЯ</label>
 										<input type="hidden" name="time-frame-label" value="PREFFERED TIME FRAME">
-										<select name="time-frame" id="time-frame" class="cost-dropdown">
+										<select name="time-frame" id="time-frame" class="cost-dropdown" required>
 											<option value="" selected="selected">Choose...</option>
-											<option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
-											<option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-											<option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-											<option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
-											<option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
-											<option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
-											<option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
-											<option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
-											<option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+											<option value="09:00  - 10:00 ">09:00  - 10:00 </option>
+											<option value="10:00  - 11:00 ">10:00  - 11:00 </option>
+											<option value="11:00  - 12:00 ">11:00  - 12:00 </option>
+											<option value="12:00  - 13:00 ">12:00  - 13:00 </option>
+											<option value="01:00  - 14:00 ">01:00  - 14:00 </option>
+											<option value="13:00  - 03:00 ">13:00  - 03:00 </option>
+											<option value="15:00  - 16:00 ">15:00  - 16:00 </option>
+											<option value="16:00  - 17:00 ">16:00  - 17:00 </option>
+											<option value="17:00  - 18:00 ">17:00  - 18:00 </option>
 										</select>
-										<input type="hidden" class="time-frame" name="time-frame-name" value="">
-									</div>*@
+										<input type="hidden" class="time-frame" asp-for="TimeFrame">
+									</div>
 									<div class="cost-calculator-box page-margin-top clearfix">
 										<label>ВЫБЕРИТЕ УСЛУГУ(И)</label>
 										<ul style="padding-top:20px">
@@ -238,55 +246,14 @@
 												<label for="steering-suspension" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Steering&amp;Suspension</label>
 											</li>
 										</ul>
-										@*<ul class="checkboxes-list margin-top-20">
-											<li>
-												<input type="hidden" value="Air Conditioning" name="air-conditioning-label">
-												<input type="checkbox" data-value="1" value="0" name="air-contitioning" class="cost-slider-input type-checkbox" id="air-conditioning">
-												<label for="air-conditioning" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Air Conditioning</label>
-											</li>
-											<li>
-												<input type="hidden" value="Brakes Repair" name="brakes-repair-label">
-												<input type="checkbox" data-value="1" value="0" name="brakes-repair" class="cost-slider-input type-checkbox" id="brakes-repair">
-												<label for="brakes-repair" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Brakes Repair</label>
-											</li>
-											<li>
-												<input type="hidden" value="Engine Diagnostics" name="engine-diagnostics-label">
-												<input type="checkbox" data-value="1" value="0" name="engine-diagnostics" class="cost-slider-input type-checkbox" id="engine-diagnostics">
-												<label for="engine-diagnostics" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Engine Diagnostics</label>
-											</li>
-										</ul>
-										<ul class="checkboxes-list top-border-none">
-											<li>
-												<input type="hidden" value="Heating &amp; Cooling" name="heating-cooling-label">
-												<input type="checkbox" data-value="1" value="1" checked="checked" name="heating-cooling" class="cost-slider-input type-checkbox" id="heating-cooling">
-												<label for="heating-cooling" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Heating&amp;Cooling</label>
-											</li>
-											<li>
-												<input type="hidden" value="Oil, Lube &amp; Filters" name="oil-lube-filters-label">
-												<input type="checkbox" data-value="1" value="1" checked="checked" name="oil-lube-filters" class="cost-slider-input type-checkbox" id="oil-lube-filters">
-												<label for="oil-lube-filters" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Oil, Lube &amp; Filters</label>
-											</li>
-											<li>
-												<input type="hidden" value="Steering &amp; Suspension" name="steering-suspension-label">
-												<input type="checkbox" data-value="1" value="0" name="steering-suspension" class="cost-slider-input type-checkbox" id="steering-suspension">
-												<label for="steering-suspension" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Steering&amp;Suspension</label>
-											</li>
-										</ul>
-										<ul class="checkboxes-list top-border-none">
-											<li>
-												<input type="hidden" value="Transmission Repair" name="transmission-repair-label">
-												<input type="checkbox" data-value="1" value="0" name="transmission-repair" class="cost-slider-input type-checkbox" id="transmission-repair">
-												<label for="transmission-repair" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Transmission Repair</label>
-											</li>
-											<li>
-												<input type="hidden" value="Wheel Alignment" name="wheel-alignment-label">
-												<input type="checkbox" data-value="1" value="0" name="wheel-alignment" class="cost-slider-input type-checkbox" id="wheel-alignment">
-												<label for="wheel-alignment" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Wheel Alignment</label>
-											</li>
-										</ul>*@
 									</div>
 								</fieldset>
 								<fieldset class="column column-1-2">
+									<div class="cost-calculator-box clearfix">
+										<label>VIN-НОМЕР</label>
+										<input type="hidden" name="vehicle-mileage-label" value="VEHICLE MILEAGE">
+										<input id="vehicle-mileage" class="cost-slider-input big" placeholder="VIN-номер" asp-for="VinNumber" required>
+									</div>
 									<label>КОНТАКТНЫЕ ДАННЫЕ</label>
 									<input class="text-input" type="text" value="@Model.UserName" asp-for="UserName"  placeholder="Имя *" required>
 									<input class="text-input" type="text" value="@Model.Email" asp-for="Email" placeholder="Эл. Адрес *" required>
@@ -365,5 +332,6 @@
 		<script type="text/javascript" src="~/js/jquery.qtip.min.js"></script>
 		<script type="text/javascript" src="~/js/jquery.blockUI.min.js"></script>
 		<script type="text/javascript" src="~/js/main.js"></script>
-		@*<script type="text/javascript" src="~/js/odometer.min.js"></script>*@
+		<script type="text/javascript" src="~/js/odometer.min.js"></script>
+		<script type="text/javascript" src="~/js/datepicker-ru.js"></script>
 </body>
