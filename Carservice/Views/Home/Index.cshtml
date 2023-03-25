@@ -140,6 +140,14 @@
 											</a>
 										</li>
 									}
+									@if (User.IsInRole("User"))
+									{
+										<li class="left-flyout">
+											<a asp-controller="UserPanel" asp-action="Requests">
+												Мои заявки
+											</a>
+										</li>
+									}
 									@if (User.Identity.IsAuthenticated)
 									{
 										<li class="left-flyout">
@@ -366,7 +374,7 @@
 						<!-- SLIDE 1 -->
 						<li data-transition="fade" data-masterspeed="500" data-slotamount="1" data-delay="6000">
 							<!-- MAIN IMAGE -->
-							<img src="/images/slider/image_01.jpg" alt="slidebg1" data-bgfit="cover">
+							<img src="~/images/slider/image_01.jpg" alt="slidebg1" data-bgfit="cover">
 							<!-- LAYERS -->
 							<!-- LAYER 01 -->
 							<div class="tp-caption"

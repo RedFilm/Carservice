@@ -19,5 +19,7 @@ namespace Carservice.Data
         public DbSet<RepairRequest> RepairRequests { get; set; }
         public DbSet<RequestStatus> RequestStatuses { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Provider> Providers { get; set; }
     }
 }

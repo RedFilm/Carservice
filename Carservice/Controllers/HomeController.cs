@@ -51,7 +51,7 @@ namespace Carservice.Controllers
             //}
 
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            var waitStatus = await _ctx.RequestStatuses.FirstOrDefaultAsync(s => s.Name == "Waiting");
+            var waitStatus = await _ctx.RequestStatuses.FirstOrDefaultAsync(s => s.Name == "Ожидает обработки");
 
             var request = new RepairRequest()
             {
@@ -67,7 +67,8 @@ namespace Carservice.Controllers
                 PreferedDay = repairRequestVm.PreferedDay,
                 TimeFrame = repairRequestVm.TimeFrame,
                 CarNumber = repairRequestVm.CarNumber,
-                VinNumber = repairRequestVm.VinNumber
+                VinNumber = repairRequestVm.VinNumber,
+                Date = repairRequestVm.Date,
             };
             await _ctx.RepairRequests.AddAsync(request);
             await _ctx.SaveChangesAsync();

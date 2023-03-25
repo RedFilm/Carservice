@@ -21,5 +21,6 @@ namespace Carservice.Models.Repair
         public string? TimeFrame { get; set; } = "";
 		public string VinNumber { get; set; } = "";
 		public string CarNumber { get; set; } = "";
+		public string? Date { get; set; } = "";
 	}
 }

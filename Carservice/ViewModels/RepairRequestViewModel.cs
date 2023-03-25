@@ -4,6 +4,7 @@ namespace Carservice.ViewModels
 {
 	public class RepairRequestViewModel
 	{
+		public string? AppUserId { get; set; } = "";
 		public string? RequestStatus { get; set; } = "";
 		[Required]
 		public int MadeYear { get; set; }
@@ -23,5 +24,6 @@ namespace Carservice.ViewModels
 		public string? TimeFrame { get; set; } = "";
 		public string VinNumber { get; set; } = "";
 		public string CarNumber { get; set; } = "";
+		public string? Date { get; set; } = "";
 	}
 }

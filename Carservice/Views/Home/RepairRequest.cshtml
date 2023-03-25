@@ -60,7 +60,7 @@
 				<div class="vertical-align-table column-1-1">
 					<div class="header clearfix">
 						<div class="logo vertical-align-cell">
-							<h1><a href="home">Автосервис</a></h1>
+							<h1><a href="#">Автосервис</a></h1>
 						</div>
 						<a href="#" class="mobile-menu-switch vertical-align-cell">
 							<span class="line"></span>
@@ -76,7 +76,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="#">
+										<a asp-controller="Home" asp-action="Services">
 											Услуги
 										</a>
 										<ul>
@@ -223,32 +223,32 @@
 											<li>
 												<input type="hidden" value="Air Conditioning" name="air-conditioning-label">
 												<input type="checkbox" data-value="1" value="0" name="air-contitioning" class="cost-slider-input type-checkbox" id="air-conditioning">
-												<label for="air-conditioning" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Air Conditioning</label>
+												<label for="air-conditioning" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Ремонт кондиционера от 500р</label>
 											</li>
 											<li>
 												<input type="hidden" value="Brakes Repair" name="brakes-repair-label">
 												<input type="checkbox" data-value="1" value="0" name="brakes-repair" class="cost-slider-input type-checkbox" id="brakes-repair">
-												<label for="brakes-repair" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Brakes Repair</label>
+												<label for="brakes-repair" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Ремонт тормозов от 500р</label>
 											</li>
 											<li>
 												<input type="hidden" value="Engine Diagnostics" name="engine-diagnostics-label">
 												<input type="checkbox" data-value="1" value="0" name="engine-diagnostics" class="cost-slider-input type-checkbox" id="engine-diagnostics">
-												<label for="engine-diagnostics" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Engine Diagnostics</label>
+												<label for="engine-diagnostics" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Диагностика двигателя от 1000р</label>
 											</li>
 											<li>
 												<input type="hidden" value="Heating &amp; Cooling" name="heating-cooling-label">
 												<input type="checkbox" data-value="1" value="1" checked="checked" name="heating-cooling" class="cost-slider-input type-checkbox" id="heating-cooling">
-												<label for="heating-cooling" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Heating&amp;Cooling</label>
+												<label for="heating-cooling" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Колёса и шины от 1500р</label>
 											</li>
 											<li>
 												<input type="hidden" value="Oil, Lube &amp; Filters" name="oil-lube-filters-label">
 												<input type="checkbox" data-value="1" value="1" checked="checked" name="oil-lube-filters" class="cost-slider-input type-checkbox" id="oil-lube-filters">
-												<label for="oil-lube-filters" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Oil, Lube &amp; Filters</label>
+												<label for="oil-lube-filters" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Смазки, масла, фильтры от 500р</label>
 											</li>
 											<li>
 												<input type="hidden" value="Steering &amp; Suspension" name="steering-suspension-label">
 												<input type="checkbox" data-value="1" value="0" name="steering-suspension" class="cost-slider-input type-checkbox" id="steering-suspension">
-												<label for="steering-suspension" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Steering&amp;Suspension</label>
+												<label for="steering-suspension" class="checkbox-label template-bullet"><span class="checkbox-box"></span>Ремни и шланги от 1000р</label>
 											</li>
 										</ul>
 									</div>
@@ -266,6 +266,7 @@
 									<textarea class="margin-top-20" placeholder="Сломалась машина? Подробно опишите проблему" asp-for="RequestText">Сломалась машина? Подробно опишите проблему</textarea>
 									@*<input type="hidden" name="action" value="contact_form" />
 									<input type="hidden" name="form_type" value="appointment">*@
+									<input type="hidden" asp-for="Date" value="@DateTime.Now.ToString("F")"/>
 									<input class="more margin-top-20 display-block submit-contact-form" type="submit" value="ОТПРАВИТЬ"/>
 									@*<a class="more margin-top-20 display-block submit-contact-form"><span>ОТПРАВИТЬ</span></a>*@
 								</fieldset>

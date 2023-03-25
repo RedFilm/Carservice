@@ -1,5 +1,5 @@
 ﻿@using Carservice.Models.Repair;
-@model RepairRequest
+@model IEnumerable<RepairRequestViewModel>
 
 @{
 
@@ -122,9 +122,17 @@
 							</li>
 							@if (User.IsInRole("Manager"))
 							{
-									<li class="selected">
+									<li>
 										<a asp-controller="ManagerPanel" asp-action="Index">
 											Панель управления
+										</a>
+									</li>
+							}
+							@if (User.IsInRole("User"))
+							{
+									<li class="selected">
+										<a asp-controller="UserPanel" asp-action="Requests">
+											Мои заявки
 										</a>
 									</li>
 							}
@@ -160,45 +168,22 @@
 			<div class="clearfix">
 				<div class="row page-margin-top-section">
 					<div class="row">
-						<h2 class="box-header">Просмотр заявки</h2>
+						<h2 class="box-header">МОИ ЗАЯВКИ</h2>
 					</div>	
 					<div style="padding-top:40px">
-						<p style="font-size: 18px; padding:15px">
-							Оставил заявку: @Model.UserName  ||  Эл. адрес: @Model.Email  ||  Контактный номер: @Model.ContactNumber<br />
-							Марка авто: @Model.CarBrand; <br />
-							Год выпуска: @Model.MadeYear; <br />
-							Пробег: @Model.Mileage; <br />
-							Выбранные услуги: Не выбрано; <br />
-							VIN-номер: @Model.VinNumber; <br />
-							Регистрационный номер: @Model.CarNumber; <br />
-							Предпочтительный день: @Model.PreferedDay <br />
-							Время ремонта: @Model.TimeFrame <br />
-							Текст заявки: @Model.RequestText; <br />
-							<br />
-							Статус заявки: Ожидает обработки. <br />
-						</p>
-						<form class="contact-form cost-calculator-container" id="contact-form" method="post" asp-controller="ManagerPanel" asp-action="ChangeStatus">
-							<input asp-for="Id" type="hidden"/>
-							<div class="clearfix">
-								<div class="row">
-									<fieldset class="column column-1-3">
-										<div class="cost-calculator-box clearfix">
-											<select id="vehicle-make" class="cost-dropdown" asp-for="RequestStatusId">
-												<option value="1" selected="selected">Изменить статус заявки</option>
-												<option value="1">Ожидает</option>
-												<option value="2">Выполняется</option>
-												<option value="3">Выполнена</option>
-											</select>
-										</div>
-									</fieldset>
+						<ul class="list">
+							@foreach (var request in Model)
+							{
+								<li style="font-size: 18px; padding:15px">
+									Заявка от @request.Date; Статус заявки: @request.RequestStatus <br>
+									
+									Марка авто: @request.CarBrand; <br />
+									Выбранные услуги: Не выбрано; <br />
+									Текст заявки: @request.RequestText; <br />
 									<br />
-								</div>
-							</div>
-							@*<input style="padding-left: 15px; background-color: white;" type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ"/>*@
-							<div class="row gray full-width padding-top-54 padding-bottom-61 align-center">
-								<h3><span class="button-label"> </span> <input class="more" type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ" /></h3>
-							</div>
-						</form>
+								</li>
+							}
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -235,7 +220,7 @@
 						<li><span>Вторник:</span>8:00 - 17:30</li>
 						<li><span>Среда:</span>8:00 - 17:30</li>
 						<li><span>Четверг:</span>9:00 - 18:30</li>
-						<li><span>Патника:</span>9:00 - 18:30</li>
+						<li><span>Пятница:</span>9:00 - 18:30</li>
 						<li><span>Суббота:</span>8:00 - 17:00</li>
 						<li><span>Воскресенье:</span>Выходной</li>
 					</ul>
@@ -243,32 +228,4 @@
 			</div>
 		</div>
 	</div>
-
-	<a href="#top" class="scroll-top animated-element template-arrow-up" title="Scroll to top"></a>
-		<div class="background-overlay"></div>
-		<!--js-->
-		<script type="text/javascript" src="~/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery-migrate-1.4.1.min.js"></script>
-		<!--slider revolution-->			
-		<script type="text/javascript" src="~/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-		<script type="text/javascript" src="~/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.ba-bbq.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery-ui-1.11.4.custom.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.ui.touch-punch.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.isotope.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.easing.1.3.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-		<script type="text/javascript" src="~/js/jquery.touchSwipe.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.transit.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.hint.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.costCalculator.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.parallax.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.prettyPhoto.js"></script>
-		<script type="text/javascript" src="~/js/jquery.qtip.min.js"></script>
-		<script type="text/javascript" src="~/js/jquery.blockUI.min.js"></script>
-		<script type="text/javascript" src="~/js/main.js"></script>
-	@*<script type="text/javascript" src="~/js/odometer.min.js"></script>*@
 </body>
-
-
-

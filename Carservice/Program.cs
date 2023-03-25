@@ -64,11 +64,11 @@ try
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     context.Database.Migrate();
 
-    if (!context.RequestStatuses.Any(s => s.Name == "Waiting" || s.Name == "Active" || s.Name == "Done"))
+    if (!context.RequestStatuses.Any(s => s.Name == "Ожидает обработки" || s.Name == "Обрабатывается" || s.Name == "Обработана"))
     {
-        var waiting = new RequestStatus() { Name = "Waiting" };
-		var active = new RequestStatus() { Name = "Active" };
-		var done = new RequestStatus() { Name = "Done" };
+        var waiting = new RequestStatus() { Name = "Ожидает обработки" };
+		var active = new RequestStatus() { Name = "Обрабатывается" };
+		var done = new RequestStatus() { Name = "Обработана" };
 
 		context.RequestStatuses.AddAsync(waiting).GetAwaiter().GetResult();
 		context.RequestStatuses.AddAsync(active).GetAwaiter().GetResult();
