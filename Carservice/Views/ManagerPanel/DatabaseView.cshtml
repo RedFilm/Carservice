@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Service>
+﻿@model DbViewModel
 
 @{
 
@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="~/style/animations.css">
 	<link rel="stylesheet" type="text/css" href="~/style/responsive.css">
 	<link rel="stylesheet" type="text/css" href="~/style/odometer-theme-default.css">
+	<link rel="stylesheet" type="text/css" href="~/style/table.css">
 	<!--fonts-->								 
 	<link rel="stylesheet" type="text/css" href="~/fonts/streamline-small/style.css">
 	<link rel="stylesheet" type="text/css" href="~/fonts/template/styles.css">
@@ -28,7 +29,7 @@
 	<link rel="shortcut icon" href="~/images/favicon.ico">
 </head>
 
-	<body>
+<body>
 	<div class="site-container">
 			<div class="header-top-bar-container clearfix">
 				<div class="header-top-bar">
@@ -71,58 +72,58 @@
 						<div class="menu-container clearfix vertical-align-cell">
 							<nav>
 								<ul class="sf-menu">
+							<li>
+								<a asp-controller="Home" asp-action="Index">
+									Главная
+								</a>
+							</li>
+							<li>
+								<a asp-controller="Home" asp-action="Services" >
+									Услуги
+								</a>
+								<ul>
 									<li>
-										<a asp-controller="Home" asp-action="Index">
-											Главная
-										</a>
-									</li>
-									<li>
-										<a href="#" class="selected">
-											Услуги
-										</a>
-										<ul>
-											<li>
-												<a href="#">
-													Диагностика двигателя
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													Смазки, масла, фильтры
-												</a>
-											</li>
-											<li>
-												<a href="#" >
-													Ремни и шланги
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													Ремонт кондиционера
-												</a>
-											</li>
-											<li>
-												<a href="#" >
-													Ремонт тормозов
-												</a>
-											</li>
-											<li>
-												<a href="#" >
-													Колёса и шины
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li >
-										<a asp-controller="Home" asp-action="RepairRequest">
-											Заявка на ремонт
+										<a href="#">
+											Диагностика двигателя
 										</a>
 									</li>
 									<li>
-										<a asp-controller="Home" asp-action="Reviews">
-											Отзывы
+										<a href="#">
+											Смазки, масла, фильтры
 										</a>
 									</li>
+									<li>
+										<a href="#" >
+											Ремни и шланги
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											Ремонт кондиционера
+										</a>
+									</li>
+									<li>
+										<a href="#" >
+											Ремонт тормозов
+										</a>
+									</li>
+									<li>
+										<a href="#" >
+											Колёса и шины
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a asp-controller="Home" asp-action="RepairRequest">
+									Заявка на ремонт
+								</a>
+							</li>
+							<li>
+								<a asp-controller="Home" asp-action="Reviews">
+									Отзывы
+								</a>
+							</li>
 								@if (User.IsInRole("Manager"))
 								{
 											<li class="left-flyout">
@@ -148,98 +149,179 @@
 												</ul>
 											</li>
 								}
-									@if (User.Identity.IsAuthenticated)
-									{
-										<li class="left-flyout">
-											<a asp-controller="Auth" asp-action="Logout">
-												Выйти
-											</a>
-										</li>
-									}
-									else
-									{
-										<li class="left-flyout">
-											<a asp-controller="Auth" asp-action="Login">
-												Вход
-											</a>
-										</li>
-									}
-									<li class="left-flyout">
-										<a asp-controller="Auth" asp-action="Register">
-											Регистрация
-										</a>
-									</li>
-								</ul>
+								@if (User.Identity.IsAuthenticated)
+								{
+											<li class="left-flyout">
+												<a asp-controller="Auth" asp-action="Logout">
+													Выйти
+												</a>
+											</li>
+								}
+								else
+								{
+											<li class="left-flyout">
+												<a asp-controller="Auth" asp-action="Login">
+													Вход
+												</a>
+											</li>
+								}
+							<li class="left-flyout">
+								<a asp-controller="Auth" asp-action="Register">
+									Регистрация
+								</a>
+							</li>
+						</ul>
 							</nav>
 						</div>
 					</div>
 				</div>
 			</div>
-		
-
-
-
-			<div class="theme-page padding-bottom-70">
-				<div class="row page-margin-top-section">
+			<div class="theme-page padding-bottom-66">
+				
+				<div class="row page-margin-top">
+					<div class="column column-1-1">
 						<div class="row">
-							<h2 class="box-header">НАШИ УСЛУГИ</h2>
-							<p class="description align-center">Мы предоставляем целый ряд услуг. Все выполняется 
-								высококвалифицированными механиками точно в обозначенные сроки.<br />
-								В первую очередь клиент: оплата по факту выполнения. Не устроил результат? Мы вернём деньги.
-							</p>
-						</div>	
-					</div>
-				<div class="clearfix">
-					<div class="row">
-						<ul class="services-list clearfix padding-top-70">
-							<li>
-								<a href="#">
-									<img src="~/images/samples/390x260/image_01.jpg" alt="">
-								</a>
-								<h4 class="box-header"><a href="#">Диагностика двигателя от 1000р<span class="template-arrow-menu"></span></a></h4>
-							</li>
-							<li>
-								<a href="#">
-									<img src="~/images/samples/390x260/image_02.jpg" alt="">
-								</a>
-								<h4 class="box-header"><a href="#">Смазки, масла, фильтры от 500р<span class="template-arrow-menu"></span></a></h4>
-							</li>
-							<li>
-								<a href="#">
-									<img src="~/images/samples/390x260/image_03.jpg" alt="">
-								</a>
-								<h4 class="box-header"><a href="#">Ремни и шланги от 1000р<span class="template-arrow-menu"></span></a></h4>
-							</li>
-							<li>
-								<a href="#">
-									<img src="~/images/samples/390x260/image_04.jpg" alt="">
-								</a>
-								<h4 class="box-header"><a href="#">Ремонт кондиционера от 500р<span class="template-arrow-menu"></span></a></h4>
-							</li>
-							<li>
-								<a href="#">
-									<img src="~/images/samples/390x260/image_05.jpg" alt="">
-								</a>
-								<h4 class="box-header"><a href="#">Ремонт тормозов от 500р<span class="template-arrow-menu"></span></a></h4>
-							</li>
-							<li>
-								<a href="#">
-									<img src="~/images/samples/390x260/image_06.jpg" alt="">
-								</a>
-								<h4 class="box-header"><a href="#">Колёса и шины от 1500р<span class="template-arrow-menu"></span></a></h4>
-							</li>
-						</ul>
+							<h2 class="box-header">БАЗА ДАННЫХ</h2>
+						</div>
 					</div>
 				</div>
+
+				<h3 style="width:auto; margin-left: 10%">ЗАЯВКИ</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>ID-клиента</th>
+							<th>Имя клиента</th>
+							<th>Имейл</th>
+							<th>Контактный номер</th>
+							<th>Статус заявки</th>
+							<th>Год выпуска</th>
+							<th>Марка</th>
+							<th>Пробег</th>
+							<th>Услуги</th>
+							<th>VIN-номер</th>
+							<th>Регистрационный знак</th>
+							<th>День ремонта</th>
+							<th>Время ремонта</th>
+							<th>Дата заявки</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var request in Model.Context.RepairRequests)
+						{
+							<tr>
+								<td>@request.Id</td>
+								<td>@request.AppUserId</td>
+								<td>@request.UserName</td>
+								<td>@request.Email</td>
+								<td>@request.ContactNumber</td>
+								@if (request.RequestStatusId == 1)
+								{
+									<td>Ожидает обработки</td>
+								}
+								else
+								{
+									if (request.RequestStatusId == 2)
+									{
+										<td>Обрабатывается</td>
+									}
+									else
+									{
+										<td>Обработана</td>
+									}
+								}
+								<td>@request.MadeYear</td>
+								<td>@request.CarBrand</td>
+								<td>@request.Mileage</td>
+								<td>@request.Services</td>
+								<td>@request.VinNumber</td>
+								<td>@request.CarNumber</td>
+								<td>@request.PreferedDay</td>
+								<td>@request.TimeFrame</td>
+								<td>@request.Date</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+
+				<h3 style="width:auto; margin-left: 10%">ЗАКАЗЫ</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>ID-менеджера</th>
+							<th>Менеджер</th>
+							<th>Товар</th>
+							<th>Количество</th>
+							<th>Дата заказа</th>
+							<th>ID-поставщика</th>
+						</tr>
+					</thead>
+					<tbody>
+					@foreach (var request in Model.Context.Orders)
+					{
+						<tr>
+							<td>@request.Id</td>
+							<td>@request.UserId</td>
+							<td>@request.UserName</td>
+							<td>@request.Product</td>
+							<td>@request.Amount</td>
+							<td>@request.Date</td>
+							<td>@request.ProviderId</td>
+						</tr>
+					}
+					</tbody>
+				</table>
+
+				<h3 style="width:auto; margin-left: 10%">Поставщики</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID-поставщика</th>
+							<th>Наименование</th>
+							<th>Контактный номер</th>
+							<th>Адресс</th>
+							<th>Город</th>
+						</tr>
+					</thead>
+					<tbody>
+					@foreach (var provider in Model.Context.Providers)
+					{
+							<tr>
+								<td>@provider.Id</td>
+								<td>@provider.Name</td>
+								<td>@provider.ContactNumber</td>
+								<td>@provider.Address</td>
+								<td>@provider.City</td>
+							</tr>
+					}
+					</tbody>
+				</table>
+
+				<h3 style="width:auto; margin-left: 10%">ТОВАРЫ</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID-продукта</th>
+							<th>Наименование</th>
+							<th>Цена</th>
+							<th>Количество</th>
+						</tr>
+					</thead>
+					<tbody>
+					@foreach (var product in Model.Context.Products)
+					{
+						<tr>
+							<td>@product.Id</td>
+							<td>@product.ProductName</td>
+							<td>@product.Cost</td>
+							<td>@product.Amount</td>
+						</tr>
+					}
+					</tbody>
+				</table>
 			</div>
-
-
-
-
-
-
-
-
 			<div class="row dark-gray footer-row full-width padding-top-30 padding-bottom-50">
 				<div class="row row-4-4 top-border page-padding-top">
 					<div class="column column-1-4">
@@ -272,7 +354,7 @@
 							<li><span>Вторник:</span>8:00 - 17:30</li>
 							<li><span>Среда:</span>8:00 - 17:30</li>
 							<li><span>Четверг:</span>9:00 - 18:30</li>
-							<li><span>Патника:</span>9:00 - 18:30</li>
+							<li><span>Пятница:</span>9:00 - 18:30</li>
 							<li><span>Суббота:</span>8:00 - 17:00</li>
 							<li><span>Воскресенье:</span>Выходной</li>
 						</ul>

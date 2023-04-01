@@ -43,6 +43,7 @@ namespace Carservice.Controllers
 					CarNumber = request.CarNumber,
 					VinNumber = request.VinNumber,
 					Date = request.Date,
+					StrServices = request.Services,
 				});
 			}
 

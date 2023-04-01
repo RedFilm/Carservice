@@ -122,11 +122,28 @@
 							</li>
 							@if (User.IsInRole("Manager"))
 							{
-									<li>
-										<a asp-controller="ManagerPanel" asp-action="Index">
-											Панель управления
-										</a>
-									</li>
+											<li class="left-flyout">
+												<a href="#" @*asp-controller="ManagerPanel" asp-action="Index"*@>
+													Панель управления
+												</a>
+												<ul>
+													<li>
+														<a asp-controller="ManagerPanel" asp-action="RepairRequests">
+															Активные заявки
+														</a>
+													</li>
+													<li>
+														<a asp-controller="ManagerPanel" asp-action="AddOrder">
+															Добавить заказ
+														</a>
+													</li>
+													<li>
+														<a asp-controller="ManagerPanel" asp-action="DatabaseView">
+															База данных
+														</a>
+													</li>
+												</ul>
+											</li>
 							}
 							@if (User.IsInRole("User"))
 							{
@@ -169,7 +186,10 @@
 				<div class="row page-margin-top-section">
 					<div class="row">
 						<h2 class="box-header">МОИ ЗАЯВКИ</h2>
-					</div>	
+						<p class="description align-center">Здесь можно отслеживать статус вашей заявки. Обычно заявка обрабатывается от 15 минут до 24 часов.
+							Пожалуйста, дождитесь пока с вами свяжется менеджер для уточнения заявки. Если заявка была оставлена более 24ч назад, обратитесь по номеру +7(788)7876756
+							</p>
+					</div>
 					<div style="padding-top:40px">
 						<ul class="list">
 							@foreach (var request in Model)
@@ -178,7 +198,7 @@
 									Заявка от @request.Date; Статус заявки: @request.RequestStatus <br>
 									
 									Марка авто: @request.CarBrand; <br />
-									Выбранные услуги: Не выбрано; <br />
+									Выбранные услуги: @request.Services <br />
 									Текст заявки: @request.RequestText; <br />
 									<br />
 								</li>

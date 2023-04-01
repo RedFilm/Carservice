@@ -21,5 +21,6 @@ namespace Carservice.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Provider> Providers { get; set; }
-    }
+		public DbSet<Product> Products { get; set; }
+	}
 }

@@ -4,6 +4,7 @@ namespace Carservice.ViewModels
 {
 	public class RepairRequestViewModel
 	{
+		public int Id { get; set; }
 		public string? AppUserId { get; set; } = "";
 		public string? RequestStatus { get; set; } = "";
 		[Required]
@@ -12,7 +13,6 @@ namespace Carservice.ViewModels
 		public string CarBrand { get; set; } = "";
 		[Required]
 		public string Mileage { get; set; } = "";
-		public string? Servises { get; set; } = "";
 		[Required]
 		public string UserName { get; set; } = "";
 		[Required]
@@ -25,5 +25,7 @@ namespace Carservice.ViewModels
 		public string VinNumber { get; set; } = "";
 		public string CarNumber { get; set; } = "";
 		public string? Date { get; set; } = "";
+		public List<string>? Services { get; set; }
+		public string? StrServices { get; set; } = "";
 	}
 }

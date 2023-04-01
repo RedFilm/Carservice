@@ -134,9 +134,26 @@
 									@if (User.IsInRole("Manager"))
 									{
 										<li class="left-flyout">
-											<a asp-controller="ManagerPanel" asp-action="Index">
-												Панель управления
-											</a>
+												<a href="#" @*asp-controller="ManagerPanel" asp-action="Index"*@>
+													Панель управления
+												</a>
+												<ul>
+													<li>
+														<a asp-controller="ManagerPanel" asp-action="RepairRequests">
+															Активные заявки
+														</a>
+													</li>
+													<li>
+														<a asp-controller="ManagerPanel" asp-action="AddOrder">
+															Добавить заказ
+														</a>
+													</li>
+													<li>
+														<a asp-controller="ManagerPanel" asp-action="DatabaseView">
+															База данных
+														</a>
+													</li>
+												</ul>
 										</li>
 									}
 									@if (User.Identity.IsAuthenticated)

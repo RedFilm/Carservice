@@ -50,12 +50,20 @@ namespace Carservice.Controllers
             //    return BadRequest("Invalid request form");
             //}
 
-            var user = await _userManager.GetUserAsync(HttpContext.User);
+			var user = await _userManager.GetUserAsync(HttpContext.User);
             var waitStatus = await _ctx.RequestStatuses.FirstOrDefaultAsync(s => s.Name == "Ожидает обработки");
+
+            var servList = "";
+
+            foreach (var service in repairRequestVm.Services)
+            {
+                servList += $"{service} || ";
+            }
 
             var request = new RepairRequest()
             {
                 AppUserId = user.Id,
+                RequestStatus = waitStatus,
                 RequestStatusId = waitStatus.Id,
                 MadeYear = repairRequestVm.MadeYear,
                 CarBrand = repairRequestVm.CarBrand,
@@ -69,6 +77,7 @@ namespace Carservice.Controllers
                 CarNumber = repairRequestVm.CarNumber,
                 VinNumber = repairRequestVm.VinNumber,
                 Date = repairRequestVm.Date,
+                Services = servList,
             };
             await _ctx.RepairRequests.AddAsync(request);
             await _ctx.SaveChangesAsync();

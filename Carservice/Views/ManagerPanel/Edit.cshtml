@@ -1,7 +1,9 @@
 ﻿@model RepairRequestViewModel
+
 @{
 
 }
+
 
 <head>
 
@@ -166,24 +168,23 @@
 						</div>
 					</div>
 					<div class="row page-margin-top">
-						<form class="contact-form cost-calculator-container" id="contact-form" method="post" asp-controller="Home" asp-action="RepairRequest">
+						<form class="contact-form cost-calculator-container" id="contact-form" method="post" asp-controller="ManagerPanel" asp-action="EditR">
 							<div class="row">
 								<fieldset class="column column-1-3">
 									<div class="cost-calculator-box clearfix">
 										<label>ГОД ВЫПУСКА</label>
 										<input type="hidden" name="vehicle-year-label" value="VEHICLE YEAR">
 										<div class="cost-slider-container">
-											<input id="vehicle-year" class="cost-slider-input" type="number" value="2008" asp-for="MadeYear" required>
-											<div class="cost-slider" data-value="2008" data-step="1" data-min="1980" data-max="2023" data-input="vehicle-year"></div>
+											<input id="vehicle-year" class="cost-slider-input" type="number" asp-for="MadeYear" required>
+											<div class="cost-slider" data-value="@Model.MadeYear" data-step="1" data-min="1980" data-max="2023" data-input="vehicle-year"></div>
 										</div>
 									</div>
 								</fieldset>
 								<fieldset class="column column-1-3">
 									<div class="cost-calculator-box clearfix">
 										<label>МАРКА</label>
-										<input type="hidden" name="vehicle-make-label" value="VEHICLE MAKE">
-										<select name="vehicle-make" id="vehicle-make" class="cost-dropdown" required>
-											<option value="" selected="selected">Выбрать...</option>
+										<select name="vehicle-make" id="vehicle-make" class="cost-dropdown" asp-for="CarBrand" required>
+											<option value="@Model.CarBrand" selected="selected">@Model.CarBrand</option>
 											<option value="General Motors">General Motors</option>
 											<option value="Land Rover">Land Rover</option>
 											<option value="Lexus">Lexus</option>
@@ -200,9 +201,10 @@
 											<option value="Saab">Saab</option>
 											<option value="Saleen">Saleen</option>
 										</select>
-										<input type="hidden" class="vehicle-make" asp-for="CarBrand" required>
+										<input type="hidden" asp-for="CarBrand">
 									</div>
 								</fieldset>
+								
 								<fieldset class="column column-1-3">
 									<div class="cost-calculator-box clearfix">
 										<label>ПРОБЕГ</label>
@@ -230,7 +232,8 @@
 										<label>ПРЕДПОЧТИТЕЛЬНОЕ ВРЕМЯ</label>
 										<input type="hidden" name="time-frame-label" value="PREFFERED TIME FRAME">
 										<select name="time-frame" id="time-frame" class="cost-dropdown" required>
-											<option value="" selected="selected">Выбрать</option>
+											<option value="">Выбрать</option>
+											<option value="@Model.TimeFrame" selected="selected">@Model.TimeFrame</option>
 											<option value="09:00  - 10:00 ">09:00  - 10:00 </option>
 											<option value="10:00  - 11:00 ">10:00  - 11:00 </option>
 											<option value="11:00  - 12:00 ">11:00  - 12:00 </option>
@@ -243,7 +246,6 @@
 										</select>
 										<input type="hidden" class="time-frame" asp-for="TimeFrame">
 									</div>
-
 									<div style="margin-top: 30px">
 										<label>УСЛУГИ</label>
 										<div class="form_label">
@@ -272,15 +274,30 @@
 										<input id="vehicle-mileage" class="cost-slider-input big" placeholder="VIN-номер" asp-for="VinNumber" required>
 									</div>
 									<label>КОНТАКТНЫЕ ДАННЫЕ</label>
-									<input class="text-input" type="text" value="@Model.UserName" asp-for="UserName"  placeholder="Имя *" required>
-									<input class="text-input" type="text" value="@Model.Email" asp-for="Email" placeholder="Эл. Адрес *" required>
+									<input class="text-input" type="text" asp-for="UserName"  placeholder="Имя *" required>
+									<input class="text-input" type="text" asp-for="Email" placeholder="Эл. Адрес *" required>
 									<input class="text-input" type="text" asp-for="ContactNumber" placeholder="Контактный телефон" required>
 									<textarea class="margin-top-20" placeholder="Сломалась машина? Подробно опишите проблему" asp-for="RequestText">Сломалась машина? Подробно опишите проблему</textarea>
-									@*<input type="hidden" name="action" value="contact_form" />
-									<input type="hidden" name="form_type" value="appointment">*@
 									<input type="hidden" asp-for="Date" value="@DateTime.Now.ToString("F")"/>
-									<input class="more margin-top-20 display-block submit-contact-form" type="submit" value="ОТПРАВИТЬ"/>
-									@*<a class="more margin-top-20 display-block submit-contact-form"><span>ОТПРАВИТЬ</span></a>*@
+									<input type="hidden" asp-for="AppUserId"/>
+									<input type="hidden" asp-for="Id"/>
+
+									<div class="clearfix">
+										<div class="row">
+											<div class="cost-calculator-box clearfix">
+												<select id="vehicle-make" class="cost-dropdown" asp-for="RequestStatus">
+													<option value="@Model.RequestStatus" selected="selected">@Model.RequestStatus</option>
+													<option value="Ожидает обработки">Ожидает обработки</option>
+													<option value="Обрабатывается">Обрабатывается</option>
+													<option value="Обработана">Обработана</option>
+												</select>
+												<input type="hidden" asp-for="RequestStatus"/>
+											</div>
+											<br />
+										</div>
+									</div>
+
+									<input class="more margin-top-20 display-block submit-contact-form" type="submit" value="СОХРАНИТЬ ИЗМЕНЕНИЯ"/>
 								</fieldset>
 							</div>
 						</form>
