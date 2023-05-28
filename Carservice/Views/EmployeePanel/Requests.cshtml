@@ -145,11 +145,11 @@
 												</ul>
 											</li>
 							}
-							@if (User.IsInRole("User"))
+							@if (User.IsInRole("Mechanic"))
 							{
 									<li class="selected">
 										<a asp-controller="UserPanel" asp-action="Requests">
-											Мои заявки
+											Принятые заявки
 										</a>
 									</li>
 							}
@@ -185,21 +185,27 @@
 			<div class="clearfix">
 				<div class="row page-margin-top-section">
 					<div class="row">
-						<h2 class="box-header">МОИ ЗАЯВКИ</h2>
-						<p class="description align-center">Здесь можно отслеживать статус вашей заявки. Обычно заявка обрабатывается от 15 минут до 24 часов.
-							Пожалуйста, дождитесь пока с вами свяжется менеджер для уточнения заявки. Если заявка была оставлена более 24ч назад, обратитесь по номеру +7(788)7876756
-							</p>
+						<h2 class="box-header">ПРИНЯТЫЕ В РАБОТУ ЗАЯВКИ || ГЛАВНЫЙ МЕХАНИК</h2>
+
+						<p class="description align-center"> @*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Description!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*@
+						</p>
 					</div>
 					<div style="padding-top:40px">
 						<ul class="list">
-							If
 							@foreach (var request in Model)
 							{
 								<li style="font-size: 18px; padding:15px">
-									Заявка от @request.Date; Статус заявки: @request.RequestStatus <br>
 									
+									Оставил заявку: @request.UserName  ||  Эл. адрес: @request.Email  ||  Контактный номер: @request.ContactNumber<br />
+									Дата заявки: @request.Date <br />
 									Марка авто: @request.CarBrand; <br />
-									Выбранные услуги: @request.Services <br />
+									Год выпуска: @request.MadeYear; <br />
+									Пробег: @request.Mileage; <br />
+									Выбранные услуги: @request.StrServices; <br />
+									VIN-номер: @request.VinNumber; <br />
+									Регистрационный номер: @request.CarNumber; <br />
+									День ремонта: @request.PreferedDay <br />
+									Время ремонта: @request.TimeFrame <br />
 									Текст заявки: @request.RequestText; <br />
 									<br />
 								</li>

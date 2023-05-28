@@ -78,12 +78,17 @@ try
 	}
 
 	var adminRole = new IdentityRole("Manager");
+    var mechanicRole = new IdentityRole("Mechanic");
     if (!context.Roles.Any(r => r.Name == "Manager"))
     {
         roleMgr.CreateAsync(adminRole).GetAwaiter().GetResult();
-    }
+	}
+    if (!context.Roles.Any(r => r.Name == "Mechanic"))
+    {
+		roleMgr.CreateAsync(mechanicRole).GetAwaiter().GetResult();
+	}
 
-    if (!context.Users.Any(u => u.UserName == "Manager"))
+	if (!context.Users.Any(u => u.UserName == "Manager"))
     {
         var adminUser = new AppUser
         {
@@ -94,6 +99,17 @@ try
 
         userMgr.AddToRoleAsync(adminUser, adminRole.Name).GetAwaiter().GetResult();
     }
+    if (!context.Users.Any(u => u.UserName == "Mechanic"))
+    {
+		var mechanicUser = new AppUser
+		{
+			UserName = "Mechanic",
+			Email = "Mechanic@test.com"
+		};
+		var result = userMgr.CreateAsync(mechanicUser, "123").GetAwaiter().GetResult();
+
+		userMgr.AddToRoleAsync(mechanicUser, mechanicRole.Name).GetAwaiter().GetResult();
+	}
 }
 catch (Exception e)
 {

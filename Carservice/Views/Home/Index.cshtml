@@ -157,6 +157,14 @@
 											</ul>
 										</li>
 									}
+									@if (User.IsInRole("Mechanic"))
+									{
+										<li class="left-flyout">
+											<a asp-controller="EmployeePanel" asp-action="Requests">
+												Принятые в работу заявки
+											</a>
+										</li>
+									}
 									@if (User.IsInRole("User"))
 									{
 										<li class="left-flyout">

@@ -180,21 +180,27 @@
 						<h2 class="box-header">Просмотр заявки</h2>
 					</div>	
 					<div style="padding-top:40px">
-						<p style="font-size: 18px; padding:15px">
-							Оставил заявку: @Model.UserName  ||  Эл. адрес: @Model.Email  ||  Контактный номер: @Model.ContactNumber<br />
-							Дата заявки: @Model.Date <br />
-							Марка авто: @Model.CarBrand; <br />
-							Год выпуска: @Model.MadeYear; <br />
-							Пробег: @Model.Mileage; <br />
-							Выбранные услуги: @Model.StrServices; <br />
-							VIN-номер: @Model.VinNumber; <br />
-							Регистрационный номер: @Model.CarNumber; <br />
-							Предпочтительный день: @Model.PreferedDay <br />
-							Время ремонта: @Model.TimeFrame <br />
-							Текст заявки: @Model.RequestText; <br />
-							<br />
-							Статус заявки: @Model.RequestStatus <br />
-						</p>
+						<div class="row">
+							<div class="column column-1-2">
+								<p style="font-size: 18px; padding:15px">
+								Оставил заявку: @Model.UserName  ||  Эл. адрес: @Model.Email  ||  Контактный номер: @Model.ContactNumber<br />
+								Дата заявки: @Model.Date <br />
+								Марка авто: @Model.CarBrand; <br />
+								Год выпуска: @Model.MadeYear; <br />
+								Пробег: @Model.Mileage; <br />
+								Выбранные услуги: @Model.StrServices; <br />
+								VIN-номер: @Model.VinNumber; <br />
+								Регистрационный номер: @Model.CarNumber; <br />
+								Предпочтительный день: @Model.PreferedDay <br />
+								Время ремонта: @Model.TimeFrame <br />
+								Текст заявки: @Model.RequestText; <br />
+								<br />
+								Статус заявки: @Model.RequestStatus <br />
+								</p>
+							</div>
+						</div>
+						
+						
 						<div class="row">
 							<form method="get" asp-controller="ManagerPanel" asp-action="Edit">
 							<input type="hidden" asp-for="UserName" />
@@ -216,29 +222,29 @@
 							<div class="column column-1-4">
 								<h3><span class="button-label"> </span> <input class="more" type="submit" value="РЕДАКТИРОВАТЬ"/></h3>
 							</div>
-						</form>
-						<form method="post" asp-controller="ManagerPanel" asp-action="RemoveRequest">
-							<input type="hidden" asp-for="UserName" />
-							<input type="hidden" asp-for="Email" />
-							<input type="hidden" asp-for="CarBrand" />
-							<input type="hidden" asp-for="CarNumber" />
-							<input type="hidden" asp-for="MadeYear" />
-							<input type="hidden" asp-for="Mileage" />
-							<input type="hidden" asp-for="VinNumber" />
-							<input type="hidden" asp-for="PreferedDay" />
-							<input type="hidden" asp-for="TimeFrame" />
-							<input type="hidden" asp-for="RequestText" />
-							<input type="hidden" asp-for="RequestStatus" />
-							<input type="hidden" asp-for="Date" />
-							<input type="hidden" asp-for="ContactNumber" />
-							<input type="hidden" asp-for="AppUserId" />
-							<input type="hidden" asp-for="Id" />
-							<input type="hidden" asp-for="StrServices" />
+							</form>
+							<form method="post" asp-controller="ManagerPanel" asp-action="RemoveRequest">
+								<input type="hidden" asp-for="UserName" />
+								<input type="hidden" asp-for="Email" />
+								<input type="hidden" asp-for="CarBrand" />
+								<input type="hidden" asp-for="CarNumber" />
+								<input type="hidden" asp-for="MadeYear" />
+								<input type="hidden" asp-for="Mileage" />
+								<input type="hidden" asp-for="VinNumber" />
+								<input type="hidden" asp-for="PreferedDay" />
+								<input type="hidden" asp-for="TimeFrame" />
+								<input type="hidden" asp-for="RequestText" />
+								<input type="hidden" asp-for="RequestStatus" />
+								<input type="hidden" asp-for="Date" />
+								<input type="hidden" asp-for="ContactNumber" />
+								<input type="hidden" asp-for="AppUserId" />
+								<input type="hidden" asp-for="Id" />
+								<input type="hidden" asp-for="StrServices" />
 
-							<div class="column column-1-4">
-								<h3><span class="button-label"> </span> <input class="more" type="submit" value="УДАЛИТЬ ЗАЯВКУ"/></h3>
-							</div>
-						</form>
+								<div class="column column-1-4">
+									<h3><span class="button-label"> </span> <input class="more" type="submit" value="УДАЛИТЬ ЗАЯВКУ"/></h3>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
